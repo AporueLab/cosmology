@@ -131,146 +131,151 @@
       outline: none;
     }
 
-    .hotspot::after {
-      content: attr(data-label);
-      position: absolute;
-      left: 50%;
-      bottom: 8px;
-      transform: translate(-50%, 5px);
-      max-width: calc(100% - 14px);
-      padding: 6px 9px;
-      border: 1px solid rgba(121, 216, 255, 0.45);
-      border-radius: 999px;
-      background: rgba(1, 10, 18, 0.92);
-      color: #dff6ff;
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-      text-align: center;
-      white-space: nowrap;
-      opacity: 0;
+    #question-tooltip {
+      position: fixed;
+      z-index: 5000;
+      display: none;
+      width: min(430px, calc(100vw - 28px));
+      padding: 12px 14px;
+      border: 1px solid rgba(121, 216, 255, 0.6);
+      border-radius: 10px;
+      background: rgba(4, 13, 21, 0.97);
+      color: #eefaff;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+      font-size: 14px;
+      line-height: 1.45;
+      text-align: left;
       pointer-events: none;
-      transition: opacity 130ms ease, transform 130ms ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
-    .hotspot:hover::after,
-    .hotspot:focus-visible::after {
-      opacity: 1;
-      transform: translate(-50%, 0);
+    #question-tooltip.visible {
+      display: block;
+    }
+
+    #question-tooltip::before {
+      content: "Question sent to Google AI";
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     /* Percentage coordinates are relative to the infographic itself. */
     #expanding-universe {
-      top: 10.2%;
-      left: 1.5%;
-      width: 78.8%;
-      height: 24.0%;
+      top: 10.0%;
+      left: 1.4%;
+      width: 79.5%;
+      height: 24.8%;
     }
 
     #big-bang-not-explosion {
-      top: 14.0%;
-      left: 81.3%;
-      width: 16.0%;
-      height: 17.4%;
+      top: 13.8%;
+      left: 81.0%;
+      width: 16.4%;
+      height: 18.1%;
     }
 
     #before-time {
-      top: 35.7%;
-      left: 1.6%;
-      width: 29.6%;
-      height: 29.4%;
+      top: 35.4%;
+      left: 1.4%;
+      width: 30.8%;
+      height: 30.5%;
     }
 
     #singularity {
-      top: 35.7%;
-      left: 32.2%;
-      width: 27.8%;
-      height: 29.4%;
+      top: 35.4%;
+      left: 32.6%;
+      width: 28.5%;
+      height: 30.5%;
     }
 
     #beyond-overview {
-      top: 35.7%;
-      left: 61.0%;
-      width: 36.3%;
-      height: 6.4%;
+      top: 35.4%;
+      left: 61.4%;
+      width: 37.1%;
+      height: 7.1%;
     }
 
     #true-beginning {
-      top: 42.2%;
-      left: 62.0%;
-      width: 34.1%;
-      height: 4.8%;
-    }
-
-    #quantum-transition {
-      top: 47.2%;
-      left: 62.0%;
-      width: 34.1%;
-      height: 7.0%;
-    }
-
-    #cyclic-eternal {
-      top: 54.7%;
-      left: 62.0%;
-      width: 34.1%;
+      top: 42.5%;
+      left: 62.1%;
+      width: 34.8%;
       height: 5.1%;
     }
 
+    #quantum-transition {
+      top: 47.7%;
+      left: 62.1%;
+      width: 34.8%;
+      height: 7.5%;
+    }
+
+    #cyclic-eternal {
+      top: 55.3%;
+      left: 62.1%;
+      width: 34.8%;
+      height: 5.7%;
+    }
+
     #multiverse {
-      top: 60.2%;
-      left: 62.0%;
-      width: 34.1%;
-      height: 4.9%;
+      top: 61.0%;
+      left: 62.1%;
+      width: 34.8%;
+      height: 4.8%;
     }
 
     #nothing-image {
-      top: 66.9%;
-      left: 1.5%;
-      width: 27.3%;
-      height: 17.3%;
+      top: 67.1%;
+      left: 1.4%;
+      width: 28.0%;
+      height: 18.0%;
     }
 
     #nothing-possible {
-      top: 69.0%;
-      left: 29.2%;
-      width: 33.2%;
-      height: 14.6%;
+      top: 69.2%;
+      left: 29.7%;
+      width: 33.9%;
+      height: 15.4%;
     }
 
     #nothing-impossible {
-      top: 69.0%;
+      top: 69.2%;
       left: 64.0%;
-      width: 33.0%;
-      height: 14.6%;
+      width: 33.5%;
+      height: 15.4%;
     }
 
     #summary-time {
-      top: 88.7%;
-      left: 1.9%;
-      width: 23.3%;
-      height: 9.5%;
+      top: 88.0%;
+      left: 1.8%;
+      width: 24.3%;
+      height: 10.8%;
     }
 
     #summary-singularity {
-      top: 88.7%;
-      left: 26.2%;
-      width: 22.0%;
-      height: 9.5%;
+      top: 88.0%;
+      left: 26.4%;
+      width: 22.8%;
+      height: 10.8%;
     }
 
     #summary-physics {
-      top: 88.7%;
-      left: 49.0%;
-      width: 24.6%;
-      height: 9.5%;
+      top: 88.0%;
+      left: 49.4%;
+      width: 25.4%;
+      height: 10.8%;
     }
 
     #summary-existence {
-      top: 88.7%;
-      left: 74.3%;
-      width: 22.8%;
-      height: 9.5%;
+      top: 88.0%;
+      left: 74.9%;
+      width: 23.4%;
+      height: 10.8%;
     }
 
     .helper {
@@ -298,10 +303,6 @@
       background: rgba(255, 70, 70, 0.13);
     }
 
-    body.debug .hotspot::after {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
 
     @media (max-width: 700px) {
       :root {
@@ -341,15 +342,13 @@
         text-align: left;
       }
 
-      .hotspot::after {
-        display: none;
+      #question-tooltip {
+        display: none !important;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-
-      .hotspot,
-      .hotspot::after {
+      .hotspot {
         transition: none;
       }
     }
@@ -361,6 +360,8 @@
     <h1 class="main-title">The Beginning of Space-Time</h1>
     <p class="main-subtitle"><strong>Tap a section</strong> to explore the question with Google AI</p>
   </header>
+
+  <div id="question-tooltip" role="tooltip" aria-hidden="true"></div>
 
   <div id="header-spacer" aria-hidden="true"></div>
 
@@ -402,7 +403,7 @@
     </div>
 
     <p class="helper">
-      Desktop: hover to reveal the interactive regions. Keyboard: use <kbd>Tab</kbd> and <kbd>Enter</kbd>. Mobile: the infographic is intentionally wider than the screen so the text remains readable; swipe sideways to explore it.
+      Desktop: hover over a section to preview the exact question, then click to ask Google AI. Keyboard: use <kbd>Tab</kbd> to preview and <kbd>Enter</kbd> to open it. Mobile: tap a section to ask the question; swipe sideways to explore the infographic.
     </p>
   </main>
 
@@ -412,10 +413,68 @@
       window.open(url, '_blank', 'noopener,noreferrer');
     }
 
+    const tooltip = document.getElementById('question-tooltip');
+
+    function placeTooltip(x, y) {
+      const gap = 18;
+      const edge = 14;
+
+      tooltip.style.left = `${x + gap}px`;
+      tooltip.style.top = `${y + gap}px`;
+
+      const rect = tooltip.getBoundingClientRect();
+      let left = x + gap;
+      let top = y + gap;
+
+      if (left + rect.width > window.innerWidth - edge) {
+        left = x - rect.width - gap;
+      }
+      if (top + rect.height > window.innerHeight - edge) {
+        top = y - rect.height - gap;
+      }
+
+      left = Math.max(edge, Math.min(left, window.innerWidth - rect.width - edge));
+      top = Math.max(edge, Math.min(top, window.innerHeight - rect.height - edge));
+
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+    }
+
+    function showTooltip(hotspot, x, y) {
+      tooltip.textContent = hotspot.dataset.question;
+      tooltip.classList.add('visible');
+      tooltip.setAttribute('aria-hidden', 'false');
+      placeTooltip(x, y);
+    }
+
+    function hideTooltip() {
+      tooltip.classList.remove('visible');
+      tooltip.setAttribute('aria-hidden', 'true');
+    }
+
     document.querySelectorAll('.hotspot').forEach((hotspot) => {
       hotspot.addEventListener('click', () => {
         askGoogleAI(hotspot.dataset.question);
       });
+
+      hotspot.addEventListener('mouseenter', (event) => {
+        showTooltip(hotspot, event.clientX, event.clientY);
+      });
+
+      hotspot.addEventListener('mousemove', (event) => {
+        if (tooltip.classList.contains('visible')) {
+          placeTooltip(event.clientX, event.clientY);
+        }
+      });
+
+      hotspot.addEventListener('mouseleave', hideTooltip);
+
+      hotspot.addEventListener('focus', () => {
+        const rect = hotspot.getBoundingClientRect();
+        showTooltip(hotspot, rect.left + rect.width / 2, rect.top + rect.height / 2);
+      });
+
+      hotspot.addEventListener('blur', hideTooltip);
     });
 
     // Handy while adjusting hotspot positions after editing the artwork.
