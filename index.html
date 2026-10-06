@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -94,7 +95,7 @@
       filter: drop-shadow(0 20px 46px rgba(0, 0, 0, 0.42));
     }
 
-    .image-container > img {
+    .image-container>img {
       display: block;
       width: 100%;
       height: auto;
@@ -160,26 +161,117 @@
     }
 
     /* Percentage coordinates are relative to the infographic itself. */
-    #expanding-universe { top: 10.0%; left: 1.4%; width: 79.5%; height: 24.8%; }
-    #big-bang-not-explosion { top: 13.8%; left: 81.0%; width: 16.4%; height: 18.1%; }
+    #expanding-universe {
+      top: 10.2%;
+      left: 1.5%;
+      width: 78.8%;
+      height: 24.0%;
+    }
 
-    #before-time { top: 35.4%; left: 1.4%; width: 30.8%; height: 30.5%; }
-    #singularity { top: 35.4%; left: 32.6%; width: 28.5%; height: 30.5%; }
+    #big-bang-not-explosion {
+      top: 14.0%;
+      left: 81.3%;
+      width: 16.0%;
+      height: 17.4%;
+    }
 
-    #beyond-overview { top: 35.4%; left: 61.4%; width: 37.1%; height: 7.1%; }
-    #true-beginning { top: 42.5%; left: 62.1%; width: 34.8%; height: 5.1%; }
-    #quantum-transition { top: 47.7%; left: 62.1%; width: 34.8%; height: 7.5%; }
-    #cyclic-eternal { top: 55.3%; left: 62.1%; width: 34.8%; height: 5.7%; }
-    #multiverse { top: 61.0%; left: 62.1%; width: 34.8%; height: 4.8%; }
+    #before-time {
+      top: 35.7%;
+      left: 1.6%;
+      width: 29.6%;
+      height: 29.4%;
+    }
 
-    #nothing-image { top: 67.1%; left: 1.4%; width: 28.0%; height: 18.0%; }
-    #nothing-possible { top: 69.2%; left: 29.7%; width: 33.9%; height: 15.4%; }
-    #nothing-impossible { top: 69.2%; left: 64.0%; width: 33.5%; height: 15.4%; }
+    #singularity {
+      top: 35.7%;
+      left: 32.2%;
+      width: 27.8%;
+      height: 29.4%;
+    }
 
-    #summary-time { top: 88.0%; left: 1.8%; width: 24.3%; height: 10.8%; }
-    #summary-singularity { top: 88.0%; left: 26.4%; width: 22.8%; height: 10.8%; }
-    #summary-physics { top: 88.0%; left: 49.4%; width: 25.4%; height: 10.8%; }
-    #summary-existence { top: 88.0%; left: 74.9%; width: 23.4%; height: 10.8%; }
+    #beyond-overview {
+      top: 35.7%;
+      left: 61.0%;
+      width: 36.3%;
+      height: 6.4%;
+    }
+
+    #true-beginning {
+      top: 42.2%;
+      left: 62.0%;
+      width: 34.1%;
+      height: 4.8%;
+    }
+
+    #quantum-transition {
+      top: 47.2%;
+      left: 62.0%;
+      width: 34.1%;
+      height: 7.0%;
+    }
+
+    #cyclic-eternal {
+      top: 54.7%;
+      left: 62.0%;
+      width: 34.1%;
+      height: 5.1%;
+    }
+
+    #multiverse {
+      top: 60.2%;
+      left: 62.0%;
+      width: 34.1%;
+      height: 4.9%;
+    }
+
+    #nothing-image {
+      top: 66.9%;
+      left: 1.5%;
+      width: 27.3%;
+      height: 17.3%;
+    }
+
+    #nothing-possible {
+      top: 69.0%;
+      left: 29.2%;
+      width: 33.2%;
+      height: 14.6%;
+    }
+
+    #nothing-impossible {
+      top: 69.0%;
+      left: 64.0%;
+      width: 33.0%;
+      height: 14.6%;
+    }
+
+    #summary-time {
+      top: 88.7%;
+      left: 1.9%;
+      width: 23.3%;
+      height: 9.5%;
+    }
+
+    #summary-singularity {
+      top: 88.7%;
+      left: 26.2%;
+      width: 22.0%;
+      height: 9.5%;
+    }
+
+    #summary-physics {
+      top: 88.7%;
+      left: 49.0%;
+      width: 24.6%;
+      height: 9.5%;
+    }
+
+    #summary-existence {
+      top: 88.7%;
+      left: 74.3%;
+      width: 22.8%;
+      height: 9.5%;
+    }
 
     .helper {
       width: min(94vw, 1120px);
@@ -255,6 +347,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       .hotspot,
       .hotspot::after {
         transition: none;
@@ -273,92 +366,39 @@
 
   <main id="scroll-wrapper">
     <div class="image-container" id="infographic">
-      <img
-        src="spacetime-infographic.png"
-        alt="Infographic explaining the expanding universe, the meaning of before time, cosmological singularities, possible alternatives to a true beginning, and the philosophical question of absolute nothingness."
-        width="1149"
-        height="1369"
-      >
+      <img src="spacetime-infographic.png" alt="Infographic explaining the expanding universe, the meaning of before time, cosmological singularities, possible alternatives to a true beginning, and the philosophical question of absolute nothingness." width="1149" height="1369">
 
-      <button class="hotspot" id="expanding-universe" type="button"
-        data-label="Ask about cosmic expansion"
-        data-question="How does the Big Bang model describe the expansion of the universe from an extremely hot, dense early state, and what evidence supports this picture?"
-        aria-label="Ask Google AI about the expanding universe"></button>
+      <button class="hotspot" id="expanding-universe" type="button" data-label="Ask about cosmic expansion" data-question="How does the Big Bang model describe the expansion of the universe from an extremely hot, dense early state, and what evidence supports this picture?" aria-label="Ask Google AI about the expanding universe"></button>
 
-      <button class="hotspot" id="big-bang-not-explosion" type="button"
-        data-label="Why not an explosion?"
-        data-question="Why is the Big Bang better understood as the expansion of space itself rather than an explosion occurring inside pre-existing space?"
-        aria-label="Ask Google AI why the Big Bang was not an explosion in space"></button>
+      <button class="hotspot" id="big-bang-not-explosion" type="button" data-label="Why not an explosion?" data-question="Why is the Big Bang better understood as the expansion of space itself rather than an explosion occurring inside pre-existing space?" aria-label="Ask Google AI why the Big Bang was not an explosion in space"></button>
 
-      <button class="hotspot" id="before-time" type="button"
-        data-label="Can there be a before?"
-        data-question="If time itself had a beginning, does it make sense to ask what happened before the Big Bang, or does the word before become meaningless without time? Please explain the idea carefully."
-        aria-label="Ask Google AI whether before the Big Bang is a meaningful question"></button>
+      <button class="hotspot" id="before-time" type="button" data-label="Can there be a before?" data-question="If time itself had a beginning, does it make sense to ask what happened before the Big Bang, or does the word before become meaningless without time? Please explain the idea carefully." aria-label="Ask Google AI whether before the Big Bang is a meaningful question"></button>
 
-      <button class="hotspot" id="singularity" type="button"
-        data-label="What is a singularity?"
-        data-question="What does a cosmological singularity actually mean, and why do physicists often interpret it as a limit of general relativity rather than necessarily a real physical point of infinite density?"
-        aria-label="Ask Google AI about cosmological singularities"></button>
+      <button class="hotspot" id="singularity" type="button" data-label="What is a singularity?" data-question="What does a cosmological singularity actually mean, and why do physicists often interpret it as a limit of general relativity rather than necessarily a real physical point of infinite density?" aria-label="Ask Google AI about cosmological singularities"></button>
 
-      <button class="hotspot" id="beyond-overview" type="button"
-        data-label="What might replace it?"
-        data-question="What are the main scientifically serious possibilities for what could replace the Big Bang singularity, and which parts are established physics versus speculative cosmology?"
-        aria-label="Ask Google AI what might replace the Big Bang singularity"></button>
+      <button class="hotspot" id="beyond-overview" type="button" data-label="What might replace it?" data-question="What are the main scientifically serious possibilities for what could replace the Big Bang singularity, and which parts are established physics versus speculative cosmology?" aria-label="Ask Google AI what might replace the Big Bang singularity"></button>
 
-      <button class="hotspot" id="true-beginning" type="button"
-        data-label="A true beginning?"
-        data-question="Could the universe have a genuine first moment without there ever having been an earlier state of nothingness? Please explain how that can be logically possible."
-        aria-label="Ask Google AI whether the universe could have a true first moment"></button>
+      <button class="hotspot" id="true-beginning" type="button" data-label="A true beginning?" data-question="Could the universe have a genuine first moment without there ever having been an earlier state of nothingness? Please explain how that can be logically possible." aria-label="Ask Google AI whether the universe could have a true first moment"></button>
 
-      <button class="hotspot" id="quantum-transition" type="button"
-        data-label="Quantum transition"
-        data-question="What would it mean for our universe to emerge from an earlier quantum state in which ordinary space and time did not yet exist, and what theories explore this possibility?"
-        aria-label="Ask Google AI about a quantum transition before ordinary spacetime"></button>
+      <button class="hotspot" id="quantum-transition" type="button" data-label="Quantum transition" data-question="What would it mean for our universe to emerge from an earlier quantum state in which ordinary space and time did not yet exist, and what theories explore this possibility?" aria-label="Ask Google AI about a quantum transition before ordinary spacetime"></button>
 
-      <button class="hotspot" id="cyclic-eternal" type="button"
-        data-label="Cyclic or eternal?"
-        data-question="How could a cyclic, bouncing, or eternal cosmological model avoid a true beginning of time, and what are the main scientific difficulties with these ideas?"
-        aria-label="Ask Google AI about cyclic and eternal universe models"></button>
+      <button class="hotspot" id="cyclic-eternal" type="button" data-label="Cyclic or eternal?" data-question="How could a cyclic, bouncing, or eternal cosmological model avoid a true beginning of time, and what are the main scientific difficulties with these ideas?" aria-label="Ask Google AI about cyclic and eternal universe models"></button>
 
-      <button class="hotspot" id="multiverse" type="button"
-        data-label="A multiverse?"
-        data-question="How could our observable universe be one region of a larger multiverse, and does a multiverse actually answer the question of why there is something rather than nothing?"
-        aria-label="Ask Google AI about the multiverse and the origin question"></button>
+      <button class="hotspot" id="multiverse" type="button" data-label="A multiverse?" data-question="How could our observable universe be one region of a larger multiverse, and does a multiverse actually answer the question of why there is something rather than nothing?" aria-label="Ask Google AI about the multiverse and the origin question"></button>
 
-      <button class="hotspot" id="nothing-image" type="button"
-        data-label="What is absolute nothing?"
-        data-question="Is absolute nothingness a coherent concept at all? What would it mean for there to be no matter, energy, space, time, physical laws, quantum fields, possibilities, or underlying reality of any kind?"
-        aria-label="Ask Google AI what absolute nothingness would mean"></button>
+      <button class="hotspot" id="nothing-image" type="button" data-label="What is absolute nothing?" data-question="Is absolute nothingness a coherent concept at all? What would it mean for there to be no matter, energy, space, time, physical laws, quantum fields, possibilities, or underlying reality of any kind?" aria-label="Ask Google AI what absolute nothingness would mean"></button>
 
-      <button class="hotspot" id="nothing-possible" type="button"
-        data-label="Could nothingness exist?"
-        data-question="Is absolute nothingness actually a logically or physically possible state, and if it is possible, what problems arise when we ask how something could come from it?"
-        aria-label="Ask Google AI whether absolute nothingness is possible"></button>
+      <button class="hotspot" id="nothing-possible" type="button" data-label="Could nothingness exist?" data-question="Is absolute nothingness actually a logically or physically possible state, and if it is possible, what problems arise when we ask how something could come from it?" aria-label="Ask Google AI whether absolute nothingness is possible"></button>
 
-      <button class="hotspot" id="nothing-impossible" type="button"
-        data-label="Must something exist?"
-        data-question="Could absolute nothingness be impossible, so that some form of reality must necessarily exist? What arguments do philosophers and physicists give for and against that idea?"
-        aria-label="Ask Google AI whether some form of existence might be necessary"></button>
+      <button class="hotspot" id="nothing-impossible" type="button" data-label="Must something exist?" data-question="Could absolute nothingness be impossible, so that some form of reality must necessarily exist? What arguments do philosophers and physicists give for and against that idea?" aria-label="Ask Google AI whether some form of existence might be necessary"></button>
 
-      <button class="hotspot" id="summary-time" type="button"
-        data-label="Does existence need time?"
-        data-question="Does existence necessarily require time, or could something exist in a non-temporal sense? Please distinguish physical objects from mathematical truths, laws, or more fundamental forms of reality."
-        aria-label="Ask Google AI whether existence requires time"></button>
+      <button class="hotspot" id="summary-time" type="button" data-label="Does existence need time?" data-question="Does existence necessarily require time, or could something exist in a non-temporal sense? Please distinguish physical objects from mathematical truths, laws, or more fundamental forms of reality." aria-label="Ask Google AI whether existence requires time"></button>
 
-      <button class="hotspot" id="summary-singularity" type="button"
-        data-label="Where does the theory fail?"
-        data-question="Why does extrapolating general relativity backward toward the Big Bang produce a singularity or infinities, and why is that usually taken as evidence that the theory has reached its limit?"
-        aria-label="Ask Google AI why general relativity breaks down at the Big Bang singularity"></button>
+      <button class="hotspot" id="summary-singularity" type="button" data-label="Where does the theory fail?" data-question="Why does extrapolating general relativity backward toward the Big Bang produce a singularity or infinities, and why is that usually taken as evidence that the theory has reached its limit?" aria-label="Ask Google AI why general relativity breaks down at the Big Bang singularity"></button>
 
-      <button class="hotspot" id="summary-physics" type="button"
-        data-label="Why quantum gravity?"
-        data-question="What is quantum gravity, why is it needed to understand the earliest universe, and why do physicists still not have a confirmed theory of it?"
-        aria-label="Ask Google AI about quantum gravity and the early universe"></button>
+      <button class="hotspot" id="summary-physics" type="button" data-label="Why quantum gravity?" data-question="What is quantum gravity, why is it needed to understand the earliest universe, and why do physicists still not have a confirmed theory of it?" aria-label="Ask Google AI about quantum gravity and the early universe"></button>
 
-      <button class="hotspot" id="summary-existence" type="button"
-        data-label="Why anything at all?"
-        data-question="Why is there something rather than nothing, and is it possible that absolute nothingness was never a genuine alternative to existence in the first place? Please compare the major philosophical and cosmological approaches."
-        aria-label="Ask Google AI why there is something rather than nothing"></button>
+      <button class="hotspot" id="summary-existence" type="button" data-label="Why anything at all?" data-question="Why is there something rather than nothing, and is it possible that absolute nothingness was never a genuine alternative to existence in the first place? Please compare the major philosophical and cosmological approaches." aria-label="Ask Google AI why there is something rather than nothing"></button>
     </div>
 
     <p class="helper">
@@ -395,4 +435,5 @@
     window.addEventListener('resize', syncHeaderSpacer);
   </script>
 </body>
+
 </html>
