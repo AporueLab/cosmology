@@ -163,7 +163,6 @@
       font-size: 16px;
       line-height: 1.55;
       text-align: center;
-      pointer-events: none;
       backdrop-filter: blur(500px);
       -webkit-backdrop-filter: blur(500px);
     }
@@ -241,6 +240,12 @@
 
     #close-tooltip:hover {
       color: white;
+    }
+
+    #ask-google,
+    #close-tooltip {
+      pointer-events: auto;
+      touch-action: manipulation;
     }
 
     /* Percentage coordinates are relative to the infographic itself. */
@@ -553,6 +558,9 @@
     }
 
     const tooltip = document.getElementById('question-tooltip');
+    tooltip.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
     const questionText = document.getElementById('question-text');
     const dimmer = document.getElementById('tooltip-dimmer');
 
