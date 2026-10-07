@@ -130,6 +130,29 @@
       outline: none;
     }
 
+    #tooltip-dimmer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 4200;
+      display: none;
+      height: min(42vh, 320px);
+      pointer-events: none;
+      background:
+        linear-gradient(to top,
+          rgba(1, 6, 10, 0.92) 0%,
+          rgba(1, 6, 10, 0.86) 28%,
+          rgba(1, 6, 10, 0.58) 58%,
+          rgba(1, 6, 10, 0.00) 100%);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    #tooltip-dimmer.visible {
+      display: block;
+    }
+
     #question-tooltip {
       position: fixed;
       z-index: 5000;
@@ -137,19 +160,19 @@
       left: 50%;
       bottom: 24px;
       transform: translateX(-50%);
-      width: min(780px, calc(100vw - 36px));
-      padding: 18px 22px;
-      border: 1px solid rgba(121, 216, 255, 0.68);
-      border-radius: 14px;
-      background: rgba(4, 13, 21, 0.96);
+      width: min(860px, calc(100vw - 36px));
+      padding: 22px 26px;
+      border: 1px solid rgba(121, 216, 255, 0.72);
+      border-radius: 16px;
+      background: rgba(4, 13, 21, 0.98);
       color: #eefaff;
-      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.62);
-      font-size: 18px;
-      line-height: 1.5;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.72);
+      font-size: 20px;
+      line-height: 1.55;
       text-align: center;
       pointer-events: none;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     #question-tooltip.visible {
@@ -253,11 +276,16 @@
         text-align: left;
       }
 
+      #tooltip-dimmer {
+        height: min(48vh, 340px);
+      }
+
       #question-tooltip {
-        width: calc(100vw - 24px);
-        bottom: 12px;
-        padding: 14px 16px;
-        font-size: 15px;
+        width: calc(100vw - 20px);
+        bottom: 10px;
+        padding: 16px 18px;
+        font-size: 16px;
+        line-height: 1.45;
       }
     }
 
@@ -275,6 +303,7 @@
     <p class="main-subtitle"><strong>Tap a section</strong> to explore the question with Google AI</p>
   </header>
 
+  <div id="tooltip-dimmer" aria-hidden="true"></div>
   <div id="question-tooltip" role="tooltip" aria-hidden="true"></div>
 
   <div id="header-spacer" aria-hidden="true"></div>
@@ -381,16 +410,21 @@
     }
 
     const tooltip = document.getElementById('question-tooltip');
+    const dimmer = document.getElementById('tooltip-dimmer');
 
     function showTooltip(hotspot) {
       tooltip.textContent = hotspot.dataset.question;
       tooltip.classList.add('visible');
+      dimmer.classList.add('visible');
       tooltip.setAttribute('aria-hidden', 'false');
+      dimmer.setAttribute('aria-hidden', 'false');
     }
 
     function hideTooltip() {
       tooltip.classList.remove('visible');
+      dimmer.classList.remove('visible');
       tooltip.setAttribute('aria-hidden', 'true');
+      dimmer.setAttribute('aria-hidden', 'true');
     }
 
     document.querySelectorAll('.hotspot').forEach((hotspot) => {
