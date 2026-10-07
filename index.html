@@ -48,8 +48,8 @@
       text-align: center;
       background: linear-gradient(to bottom, rgba(2, 7, 12, 0.98), rgba(2, 7, 12, 0.91));
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: brightness(0.5)
+      -webkit-backdrop-filter: brightness(0.5)
     }
 
     .main-title {
@@ -121,7 +121,6 @@
 
     .hotspot:hover,
     .hotspot:focus-visible {
-      border-color: var(--accent-line);
       background: var(--accent-soft);
       box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, 0.08),
@@ -138,14 +137,9 @@
       display: none;
       height: min(22vh, 180px);
       pointer-events: none;
-      background:
-        linear-gradient(to top,
-          rgba(1, 6, 10, 0.92) 0%,
-          rgba(1, 6, 10, 0.86) 28%,
-          rgba(1, 6, 10, 0.58) 58%,
-          rgba(1, 6, 10, 0.00) 100%);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+	  background-color: rgba(0, 0, 0, 0.9);
+      -webkit-backdrop-filter: brightness(0.5);
+      backdrop-filter: brightness(0.5);
     }
 
     #tooltip-dimmer.visible {
@@ -190,26 +184,26 @@
     }
 
     /* Percentage coordinates are relative to the infographic itself. */
-    #expanding-universe { top: 11.0%; left: 1.4%; width: 79.5%; height: 27%; }
-    #big-bang-not-explosion { top: 15%; left: 84.0%; width: 13.4%; height: 17%; }
+    #expanding-universe { top: 10.2%; left: 1.4%; width: 79.5%; height: 25.5%; }
+    #big-bang-not-explosion { top: 14.5%; left: 82.4%; width: 14.9%; height: 17.7%; }
 
-    #before-time { top: 35.4%; left: 1.4%; width: 30.8%; height: 30.5%; }
-    #singularity { top: 35.4%; left: 32.6%; width: 28.5%; height: 30.5%; }
+    #before-time { top: 36.0%; left: 1.4%; width: 30.8%; height: 32.0%; }
+    #singularity { top: 36.0%; left: 32.0%; width: 28.5%; height: 32.0%; }
 
-    #beyond-overview { top: 35.4%; left: 61.4%; width: 37.1%; height: 7.1%; }
-    #true-beginning { top: 42.5%; left: 62.1%; width: 34.8%; height: 5.1%; }
-    #quantum-transition { top: 47.7%; left: 62.1%; width: 34.8%; height: 7.5%; }
-    #cyclic-eternal { top: 55.3%; left: 62.1%; width: 34.8%; height: 5.7%; }
-    #multiverse { top: 61.0%; left: 62.1%; width: 34.8%; height: 4.8%; }
+    #beyond-overview { top: 36.0%; left: 61.4%; width: 37.1%; height: 7.1%; }
+    #true-beginning { top: 42.6%; left: 62.1%; width: 34.8%; height: 5.1%; }
+    #quantum-transition { top: 47.7%; left: 62.1%; width: 34.8%; height: 6.6%; }
+    #cyclic-eternal { top: 54.3%; left: 62.1%; width: 34.8%; height: 5.0%; }
+    #multiverse { top: 59.5%; left: 62.1%; width: 34.8%; height: 5.6%; }
 
-    #nothing-image { top: 67.1%; left: 1.4%; width: 28.0%; height: 18.0%; }
-    #nothing-possible { top: 69.2%; left: 29.7%; width: 33.9%; height: 15.4%; }
-    #nothing-impossible { top: 69.2%; left: 64.0%; width: 33.5%; height: 15.4%; }
+    #nothing-image { top: 68.4%; left: 1.4%; width: 28.0%; height: 19.0%; }
+    #nothing-possible { top: 68.4%; left: 29.7%; width: 33.9%; height: 19.0%; }
+    #nothing-impossible { top: 68.4%; left: 64.0%; width: 33.5%; height: 19.0%; }
 
-    #summary-time { top: 88.0%; left: 1.8%; width: 24.3%; height: 10.8%; }
-    #summary-singularity { top: 88.0%; left: 26.4%; width: 22.8%; height: 10.8%; }
-    #summary-physics { top: 88.0%; left: 49.4%; width: 25.4%; height: 10.8%; }
-    #summary-existence { top: 88.0%; left: 74.9%; width: 23.4%; height: 10.8%; }
+    #summary-time { top: 89.4%; left: 1.8%; width: 24.3%; height: 10.8%; }
+    #summary-singularity { top: 89.4%; left: 26.4%; width: 22.8%; height: 10.8%; }
+    #summary-physics { top: 89.4%; left: 49.4%; width: 25.4%; height: 10.8%; }
+    #summary-existence { top: 89.4%; left: 74.9%; width: 23.4%; height: 10.8%; }
 
     .helper {
       width: min(94vw, 1120px);
