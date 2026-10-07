@@ -173,7 +173,7 @@
     }
 
     #question-tooltip::before {
-      content: "Click to ask Google:";
+      content: "Ask Google:";
       display: block;
       margin-bottom: 8px;
       color: var(--accent);
@@ -357,7 +357,7 @@
       }
 
       #scroll-wrapper {
-        width: 260vw;
+        width: 300vw;
         margin-left: 0;
         padding: 4px 0 180px;
         overflow-x: visible;
@@ -367,13 +367,13 @@
       .image-container {
         display: inline-block;
         position: relative;
-        width: 260vw;
+        width: 300vw;
         max-width: none;
         margin: 0;
       }
 
       .image-container>img {
-        width: 260vw;
+        width: 300vw;
         max-width: none;
         height: auto;
         margin: 0;
@@ -507,14 +507,15 @@
     // Handy while adjusting hotspot positions after editing the artwork.
     // Example: https://your-site.github.io/?debug=1
     const params = new URLSearchParams(window.location.search);
+
     if (params.get('debug') === '1') {
       document.body.classList.add('debug');
     }
 
-    // Keep the spacer matched to the fixed header if fonts or screen size change.
     function syncHeaderSpacer() {
       const header = document.getElementById('fixed-header');
-      document.getElementById('header-spacer').style.height = `${header.offsetHeight + 12}px`;
+      document.getElementById('header-spacer').style.height =
+        `${header.offsetHeight + 12}px`;
     }
 
     window.addEventListener('load', syncHeaderSpacer);
