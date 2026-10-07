@@ -566,18 +566,13 @@
     }
 
     document.querySelectorAll('.hotspot').forEach((hotspot) => {
-
-      /*
-        Clicking/tapping a hotspot NEVER opens Google.
-        It only displays the question.
-      */
       hotspot.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
 
         showTooltip(hotspot);
       });
-
+    });
 
     /*
       Google can ONLY be opened from this button.
