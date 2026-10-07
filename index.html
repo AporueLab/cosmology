@@ -172,15 +172,75 @@
       display: block;
     }
 
-    #question-tooltip::before {
-      content: "Ask Google:";
+    #question-tooltip {
+      position: fixed;
+      z-index: 5000;
+      display: none;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      width: min(860px, calc(100vw - 36px));
+      padding: 22px 26px 18px;
+      border: 1px solid rgba(121, 216, 255, 0.72);
+      border-radius: 16px;
+      background: rgba(4, 13, 21, 0.98);
+      color: #eefaff;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.72);
+      font-size: 16px;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    #question-tooltip.visible {
       display: block;
+    }
+
+    #question-heading {
       margin-bottom: 8px;
       color: var(--accent);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.09em;
       text-transform: uppercase;
+    }
+
+    #question-text {
+      padding: 0 20px;
+    }
+
+    #ask-google {
+      margin-top: 15px;
+      padding: 9px 18px;
+      border: 1px solid rgba(121, 216, 255, 0.7);
+      border-radius: 8px;
+      background: rgba(121, 216, 255, 0.14);
+      color: #eefaff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #ask-google:hover {
+      background: rgba(121, 216, 255, 0.25);
+    }
+
+    #close-tooltip {
+      position: absolute;
+      top: 7px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #aebdca;
+      font-size: 26px;
+      line-height: 30px;
+      cursor: pointer;
+    }
+
+    #close-tooltip:hover {
+      color: white;
     }
 
     /* Percentage coordinates are relative to the infographic itself. */
@@ -399,6 +459,17 @@
         font-size: 14px;
         line-height: 1.45;
       }
+
+      #close-tooltip {
+        top: 5px;
+        right: 7px;
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+        line-height: 38px;
+      }
+
+
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -416,7 +487,17 @@
   </header>
 
   <div id="tooltip-dimmer" aria-hidden="true"></div>
-  <div id="question-tooltip" role="tooltip" aria-hidden="true"></div>
+  <div id="question-tooltip" role="dialog" aria-hidden="true">
+    <button id="close-tooltip" type="button" aria-label="Close">×</button>
+
+    <div id="question-heading">Ask Google AI:</div>
+
+    <div id="question-text"></div>
+
+    <button id="ask-google" type="button">
+      Ask Google AI
+    </button>
+  </div>
 
   <div id="header-spacer" aria-hidden="true"></div>
 
@@ -464,17 +545,30 @@
 
   <script>
     function askGoogleAI(question) {
-      const url = 'https://www.google.com/search?udm=50&q=' + encodeURIComponent(question);
+      const url =
+        'https://www.google.com/search?udm=50&q=' +
+        encodeURIComponent(question);
+
       window.open(url, '_blank', 'noopener,noreferrer');
     }
 
     const tooltip = document.getElementById('question-tooltip');
+    const questionText = document.getElementById('question-text');
     const dimmer = document.getElementById('tooltip-dimmer');
 
+    const askButton = document.getElementById('ask-google');
+    const closeButton = document.getElementById('close-tooltip');
+
+    let currentQuestion = '';
+
     function showTooltip(hotspot) {
-      tooltip.textContent = hotspot.dataset.question;
+      currentQuestion = hotspot.dataset.question;
+
+      questionText.textContent = currentQuestion;
+
       tooltip.classList.add('visible');
       dimmer.classList.add('visible');
+
       tooltip.setAttribute('aria-hidden', 'false');
       dimmer.setAttribute('aria-hidden', 'false');
     }
@@ -482,30 +576,61 @@
     function hideTooltip() {
       tooltip.classList.remove('visible');
       dimmer.classList.remove('visible');
+
       tooltip.setAttribute('aria-hidden', 'true');
       dimmer.setAttribute('aria-hidden', 'true');
+
+      currentQuestion = '';
     }
 
     document.querySelectorAll('.hotspot').forEach((hotspot) => {
-      hotspot.addEventListener('click', () => {
-        askGoogleAI(hotspot.dataset.question);
-      });
 
-      hotspot.addEventListener('mouseenter', () => {
+      /*
+        Clicking/tapping a hotspot NEVER opens Google.
+        It only displays the question.
+      */
+      hotspot.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
         showTooltip(hotspot);
       });
 
-      hotspot.addEventListener('mouseleave', hideTooltip);
+      /*
+        Desktop hover preview.
+        Touchscreens normally ignore this.
+      */
+      hotspot.addEventListener('mouseenter', () => {
+        if (window.matchMedia('(hover: hover)').matches) {
+          showTooltip(hotspot);
+        }
+      });
 
       hotspot.addEventListener('focus', () => {
         showTooltip(hotspot);
       });
-
-      hotspot.addEventListener('blur', hideTooltip);
     });
 
-    // Handy while adjusting hotspot positions after editing the artwork.
-    // Example: https://your-site.github.io/?debug=1
+    /*
+      Google can ONLY be opened from this button.
+    */
+    askButton.addEventListener('click', () => {
+      if (currentQuestion) {
+        askGoogleAI(currentQuestion);
+      }
+    });
+
+    closeButton.addEventListener('click', hideTooltip);
+
+    /*
+      Escape closes it on desktop.
+    */
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        hideTooltip();
+      }
+    });
+
     const params = new URLSearchParams(window.location.search);
 
     if (params.get('debug') === '1') {
@@ -514,6 +639,7 @@
 
     function syncHeaderSpacer() {
       const header = document.getElementById('fixed-header');
+
       document.getElementById('header-spacer').style.height =
         `${header.offsetHeight + 12}px`;
     }
