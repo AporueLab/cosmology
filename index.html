@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -95,7 +94,7 @@
       filter: drop-shadow(0 20px 46px rgba(0, 0, 0, 0.42));
     }
 
-    .image-container>img {
+    .image-container > img {
       display: block;
       width: 100%;
       height: auto;
@@ -135,19 +134,22 @@
       position: fixed;
       z-index: 5000;
       display: none;
-      width: min(430px, calc(100vw - 28px));
-      padding: 12px 14px;
-      border: 1px solid rgba(121, 216, 255, 0.6);
-      border-radius: 10px;
-      background: rgba(4, 13, 21, 0.97);
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      width: min(780px, calc(100vw - 36px));
+      padding: 18px 22px;
+      border: 1px solid rgba(121, 216, 255, 0.68);
+      border-radius: 14px;
+      background: rgba(4, 13, 21, 0.96);
       color: #eefaff;
-      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
-      font-size: 14px;
-      line-height: 1.45;
-      text-align: left;
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.62);
+      font-size: 18px;
+      line-height: 1.5;
+      text-align: center;
       pointer-events: none;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     #question-tooltip.visible {
@@ -155,128 +157,37 @@
     }
 
     #question-tooltip::before {
-      content: "Question sent to Google AI";
+      content: "Click to ask Google AI";
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--accent);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
     }
 
     /* Percentage coordinates are relative to the infographic itself. */
-    #expanding-universe {
-      top: 10.0%;
-      left: 1.4%;
-      width: 79.5%;
-      height: 24.8%;
-    }
+    #expanding-universe { top: 10.0%; left: 1.4%; width: 79.5%; height: 24.8%; }
+    #big-bang-not-explosion { top: 13.8%; left: 81.0%; width: 16.4%; height: 18.1%; }
 
-    #big-bang-not-explosion {
-      top: 13.8%;
-      left: 81.0%;
-      width: 16.4%;
-      height: 18.1%;
-    }
+    #before-time { top: 35.4%; left: 1.4%; width: 30.8%; height: 30.5%; }
+    #singularity { top: 35.4%; left: 32.6%; width: 28.5%; height: 30.5%; }
 
-    #before-time {
-      top: 35.4%;
-      left: 1.4%;
-      width: 30.8%;
-      height: 30.5%;
-    }
+    #beyond-overview { top: 35.4%; left: 61.4%; width: 37.1%; height: 7.1%; }
+    #true-beginning { top: 42.5%; left: 62.1%; width: 34.8%; height: 5.1%; }
+    #quantum-transition { top: 47.7%; left: 62.1%; width: 34.8%; height: 7.5%; }
+    #cyclic-eternal { top: 55.3%; left: 62.1%; width: 34.8%; height: 5.7%; }
+    #multiverse { top: 61.0%; left: 62.1%; width: 34.8%; height: 4.8%; }
 
-    #singularity {
-      top: 35.4%;
-      left: 32.6%;
-      width: 28.5%;
-      height: 30.5%;
-    }
+    #nothing-image { top: 67.1%; left: 1.4%; width: 28.0%; height: 18.0%; }
+    #nothing-possible { top: 69.2%; left: 29.7%; width: 33.9%; height: 15.4%; }
+    #nothing-impossible { top: 69.2%; left: 64.0%; width: 33.5%; height: 15.4%; }
 
-    #beyond-overview {
-      top: 35.4%;
-      left: 61.4%;
-      width: 37.1%;
-      height: 7.1%;
-    }
-
-    #true-beginning {
-      top: 42.5%;
-      left: 62.1%;
-      width: 34.8%;
-      height: 5.1%;
-    }
-
-    #quantum-transition {
-      top: 47.7%;
-      left: 62.1%;
-      width: 34.8%;
-      height: 7.5%;
-    }
-
-    #cyclic-eternal {
-      top: 55.3%;
-      left: 62.1%;
-      width: 34.8%;
-      height: 5.7%;
-    }
-
-    #multiverse {
-      top: 61.0%;
-      left: 62.1%;
-      width: 34.8%;
-      height: 4.8%;
-    }
-
-    #nothing-image {
-      top: 67.1%;
-      left: 1.4%;
-      width: 28.0%;
-      height: 18.0%;
-    }
-
-    #nothing-possible {
-      top: 69.2%;
-      left: 29.7%;
-      width: 33.9%;
-      height: 15.4%;
-    }
-
-    #nothing-impossible {
-      top: 69.2%;
-      left: 64.0%;
-      width: 33.5%;
-      height: 15.4%;
-    }
-
-    #summary-time {
-      top: 88.0%;
-      left: 1.8%;
-      width: 24.3%;
-      height: 10.8%;
-    }
-
-    #summary-singularity {
-      top: 88.0%;
-      left: 26.4%;
-      width: 22.8%;
-      height: 10.8%;
-    }
-
-    #summary-physics {
-      top: 88.0%;
-      left: 49.4%;
-      width: 25.4%;
-      height: 10.8%;
-    }
-
-    #summary-existence {
-      top: 88.0%;
-      left: 74.9%;
-      width: 23.4%;
-      height: 10.8%;
-    }
+    #summary-time { top: 88.0%; left: 1.8%; width: 24.3%; height: 10.8%; }
+    #summary-singularity { top: 88.0%; left: 26.4%; width: 22.8%; height: 10.8%; }
+    #summary-physics { top: 88.0%; left: 49.4%; width: 25.4%; height: 10.8%; }
+    #summary-existence { top: 88.0%; left: 74.9%; width: 23.4%; height: 10.8%; }
 
     .helper {
       width: min(94vw, 1120px);
@@ -343,7 +254,10 @@
       }
 
       #question-tooltip {
-        display: none !important;
+        width: calc(100vw - 24px);
+        bottom: 12px;
+        padding: 14px 16px;
+        font-size: 15px;
       }
     }
 
@@ -367,39 +281,92 @@
 
   <main id="scroll-wrapper">
     <div class="image-container" id="infographic">
-      <img src="spacetime-infographic.png" alt="Infographic explaining the expanding universe, the meaning of before time, cosmological singularities, possible alternatives to a true beginning, and the philosophical question of absolute nothingness." width="1149" height="1369">
+      <img
+        src="spacetime-infographic.png"
+        alt="Infographic explaining the expanding universe, the meaning of before time, cosmological singularities, possible alternatives to a true beginning, and the philosophical question of absolute nothingness."
+        width="1149"
+        height="1369"
+      >
 
-      <button class="hotspot" id="expanding-universe" type="button" data-label="Ask about cosmic expansion" data-question="How does the Big Bang model describe the expansion of the universe from an extremely hot, dense early state, and what evidence supports this picture?" aria-label="Ask Google AI about the expanding universe"></button>
+      <button class="hotspot" id="expanding-universe" type="button"
+        data-label="Ask about cosmic expansion"
+        data-question="How does the Big Bang model describe the expansion of the universe from an extremely hot, dense early state, and what evidence supports this picture?"
+        aria-label="Ask Google AI about the expanding universe"></button>
 
-      <button class="hotspot" id="big-bang-not-explosion" type="button" data-label="Why not an explosion?" data-question="Why is the Big Bang better understood as the expansion of space itself rather than an explosion occurring inside pre-existing space?" aria-label="Ask Google AI why the Big Bang was not an explosion in space"></button>
+      <button class="hotspot" id="big-bang-not-explosion" type="button"
+        data-label="Why not an explosion?"
+        data-question="Why is the Big Bang better understood as the expansion of space itself rather than an explosion occurring inside pre-existing space?"
+        aria-label="Ask Google AI why the Big Bang was not an explosion in space"></button>
 
-      <button class="hotspot" id="before-time" type="button" data-label="Can there be a before?" data-question="If time itself had a beginning, does it make sense to ask what happened before the Big Bang, or does the word before become meaningless without time? Please explain the idea carefully." aria-label="Ask Google AI whether before the Big Bang is a meaningful question"></button>
+      <button class="hotspot" id="before-time" type="button"
+        data-label="Can there be a before?"
+        data-question="If time itself had a beginning, does it make sense to ask what happened before the Big Bang, or does the word before become meaningless without time? Please explain the idea carefully."
+        aria-label="Ask Google AI whether before the Big Bang is a meaningful question"></button>
 
-      <button class="hotspot" id="singularity" type="button" data-label="What is a singularity?" data-question="What does a cosmological singularity actually mean, and why do physicists often interpret it as a limit of general relativity rather than necessarily a real physical point of infinite density?" aria-label="Ask Google AI about cosmological singularities"></button>
+      <button class="hotspot" id="singularity" type="button"
+        data-label="What is a singularity?"
+        data-question="What does a cosmological singularity actually mean, and why do physicists often interpret it as a limit of general relativity rather than necessarily a real physical point of infinite density?"
+        aria-label="Ask Google AI about cosmological singularities"></button>
 
-      <button class="hotspot" id="beyond-overview" type="button" data-label="What might replace it?" data-question="What are the main scientifically serious possibilities for what could replace the Big Bang singularity, and which parts are established physics versus speculative cosmology?" aria-label="Ask Google AI what might replace the Big Bang singularity"></button>
+      <button class="hotspot" id="beyond-overview" type="button"
+        data-label="What might replace it?"
+        data-question="What are the main scientifically serious possibilities for what could replace the Big Bang singularity, and which parts are established physics versus speculative cosmology?"
+        aria-label="Ask Google AI what might replace the Big Bang singularity"></button>
 
-      <button class="hotspot" id="true-beginning" type="button" data-label="A true beginning?" data-question="Could the universe have a genuine first moment without there ever having been an earlier state of nothingness? Please explain how that can be logically possible." aria-label="Ask Google AI whether the universe could have a true first moment"></button>
+      <button class="hotspot" id="true-beginning" type="button"
+        data-label="A true beginning?"
+        data-question="Could the universe have a genuine first moment without there ever having been an earlier state of nothingness? Please explain how that can be logically possible."
+        aria-label="Ask Google AI whether the universe could have a true first moment"></button>
 
-      <button class="hotspot" id="quantum-transition" type="button" data-label="Quantum transition" data-question="What would it mean for our universe to emerge from an earlier quantum state in which ordinary space and time did not yet exist, and what theories explore this possibility?" aria-label="Ask Google AI about a quantum transition before ordinary spacetime"></button>
+      <button class="hotspot" id="quantum-transition" type="button"
+        data-label="Quantum transition"
+        data-question="What would it mean for our universe to emerge from an earlier quantum state in which ordinary space and time did not yet exist, and what theories explore this possibility?"
+        aria-label="Ask Google AI about a quantum transition before ordinary spacetime"></button>
 
-      <button class="hotspot" id="cyclic-eternal" type="button" data-label="Cyclic or eternal?" data-question="How could a cyclic, bouncing, or eternal cosmological model avoid a true beginning of time, and what are the main scientific difficulties with these ideas?" aria-label="Ask Google AI about cyclic and eternal universe models"></button>
+      <button class="hotspot" id="cyclic-eternal" type="button"
+        data-label="Cyclic or eternal?"
+        data-question="How could a cyclic, bouncing, or eternal cosmological model avoid a true beginning of time, and what are the main scientific difficulties with these ideas?"
+        aria-label="Ask Google AI about cyclic and eternal universe models"></button>
 
-      <button class="hotspot" id="multiverse" type="button" data-label="A multiverse?" data-question="How could our observable universe be one region of a larger multiverse, and does a multiverse actually answer the question of why there is something rather than nothing?" aria-label="Ask Google AI about the multiverse and the origin question"></button>
+      <button class="hotspot" id="multiverse" type="button"
+        data-label="A multiverse?"
+        data-question="How could our observable universe be one region of a larger multiverse, and does a multiverse actually answer the question of why there is something rather than nothing?"
+        aria-label="Ask Google AI about the multiverse and the origin question"></button>
 
-      <button class="hotspot" id="nothing-image" type="button" data-label="What is absolute nothing?" data-question="Is absolute nothingness a coherent concept at all? What would it mean for there to be no matter, energy, space, time, physical laws, quantum fields, possibilities, or underlying reality of any kind?" aria-label="Ask Google AI what absolute nothingness would mean"></button>
+      <button class="hotspot" id="nothing-image" type="button"
+        data-label="What is absolute nothing?"
+        data-question="Is absolute nothingness a coherent concept at all? What would it mean for there to be no matter, energy, space, time, physical laws, quantum fields, possibilities, or underlying reality of any kind?"
+        aria-label="Ask Google AI what absolute nothingness would mean"></button>
 
-      <button class="hotspot" id="nothing-possible" type="button" data-label="Could nothingness exist?" data-question="Is absolute nothingness actually a logically or physically possible state, and if it is possible, what problems arise when we ask how something could come from it?" aria-label="Ask Google AI whether absolute nothingness is possible"></button>
+      <button class="hotspot" id="nothing-possible" type="button"
+        data-label="Could nothingness exist?"
+        data-question="Is absolute nothingness actually a logically or physically possible state, and if it is possible, what problems arise when we ask how something could come from it?"
+        aria-label="Ask Google AI whether absolute nothingness is possible"></button>
 
-      <button class="hotspot" id="nothing-impossible" type="button" data-label="Must something exist?" data-question="Could absolute nothingness be impossible, so that some form of reality must necessarily exist? What arguments do philosophers and physicists give for and against that idea?" aria-label="Ask Google AI whether some form of existence might be necessary"></button>
+      <button class="hotspot" id="nothing-impossible" type="button"
+        data-label="Must something exist?"
+        data-question="Could absolute nothingness be impossible, so that some form of reality must necessarily exist? What arguments do philosophers and physicists give for and against that idea?"
+        aria-label="Ask Google AI whether some form of existence might be necessary"></button>
 
-      <button class="hotspot" id="summary-time" type="button" data-label="Does existence need time?" data-question="Does existence necessarily require time, or could something exist in a non-temporal sense? Please distinguish physical objects from mathematical truths, laws, or more fundamental forms of reality." aria-label="Ask Google AI whether existence requires time"></button>
+      <button class="hotspot" id="summary-time" type="button"
+        data-label="Does existence need time?"
+        data-question="Does existence necessarily require time, or could something exist in a non-temporal sense? Please distinguish physical objects from mathematical truths, laws, or more fundamental forms of reality."
+        aria-label="Ask Google AI whether existence requires time"></button>
 
-      <button class="hotspot" id="summary-singularity" type="button" data-label="Where does the theory fail?" data-question="Why does extrapolating general relativity backward toward the Big Bang produce a singularity or infinities, and why is that usually taken as evidence that the theory has reached its limit?" aria-label="Ask Google AI why general relativity breaks down at the Big Bang singularity"></button>
+      <button class="hotspot" id="summary-singularity" type="button"
+        data-label="Where does the theory fail?"
+        data-question="Why does extrapolating general relativity backward toward the Big Bang produce a singularity or infinities, and why is that usually taken as evidence that the theory has reached its limit?"
+        aria-label="Ask Google AI why general relativity breaks down at the Big Bang singularity"></button>
 
-      <button class="hotspot" id="summary-physics" type="button" data-label="Why quantum gravity?" data-question="What is quantum gravity, why is it needed to understand the earliest universe, and why do physicists still not have a confirmed theory of it?" aria-label="Ask Google AI about quantum gravity and the early universe"></button>
+      <button class="hotspot" id="summary-physics" type="button"
+        data-label="Why quantum gravity?"
+        data-question="What is quantum gravity, why is it needed to understand the earliest universe, and why do physicists still not have a confirmed theory of it?"
+        aria-label="Ask Google AI about quantum gravity and the early universe"></button>
 
-      <button class="hotspot" id="summary-existence" type="button" data-label="Why anything at all?" data-question="Why is there something rather than nothing, and is it possible that absolute nothingness was never a genuine alternative to existence in the first place? Please compare the major philosophical and cosmological approaches." aria-label="Ask Google AI why there is something rather than nothing"></button>
+      <button class="hotspot" id="summary-existence" type="button"
+        data-label="Why anything at all?"
+        data-question="Why is there something rather than nothing, and is it possible that absolute nothingness was never a genuine alternative to existence in the first place? Please compare the major philosophical and cosmological approaches."
+        aria-label="Ask Google AI why there is something rather than nothing"></button>
     </div>
 
     <p class="helper">
@@ -415,36 +382,10 @@
 
     const tooltip = document.getElementById('question-tooltip');
 
-    function placeTooltip(x, y) {
-      const gap = 18;
-      const edge = 14;
-
-      tooltip.style.left = `${x + gap}px`;
-      tooltip.style.top = `${y + gap}px`;
-
-      const rect = tooltip.getBoundingClientRect();
-      let left = x + gap;
-      let top = y + gap;
-
-      if (left + rect.width > window.innerWidth - edge) {
-        left = x - rect.width - gap;
-      }
-      if (top + rect.height > window.innerHeight - edge) {
-        top = y - rect.height - gap;
-      }
-
-      left = Math.max(edge, Math.min(left, window.innerWidth - rect.width - edge));
-      top = Math.max(edge, Math.min(top, window.innerHeight - rect.height - edge));
-
-      tooltip.style.left = `${left}px`;
-      tooltip.style.top = `${top}px`;
-    }
-
-    function showTooltip(hotspot, x, y) {
+    function showTooltip(hotspot) {
       tooltip.textContent = hotspot.dataset.question;
       tooltip.classList.add('visible');
       tooltip.setAttribute('aria-hidden', 'false');
-      placeTooltip(x, y);
     }
 
     function hideTooltip() {
@@ -457,21 +398,14 @@
         askGoogleAI(hotspot.dataset.question);
       });
 
-      hotspot.addEventListener('mouseenter', (event) => {
-        showTooltip(hotspot, event.clientX, event.clientY);
-      });
-
-      hotspot.addEventListener('mousemove', (event) => {
-        if (tooltip.classList.contains('visible')) {
-          placeTooltip(event.clientX, event.clientY);
-        }
+      hotspot.addEventListener('mouseenter', () => {
+        showTooltip(hotspot);
       });
 
       hotspot.addEventListener('mouseleave', hideTooltip);
 
       hotspot.addEventListener('focus', () => {
-        const rect = hotspot.getBoundingClientRect();
-        showTooltip(hotspot, rect.left + rect.width / 2, rect.top + rect.height / 2);
+        showTooltip(hotspot);
       });
 
       hotspot.addEventListener('blur', hideTooltip);
@@ -494,5 +428,4 @@
     window.addEventListener('resize', syncHeaderSpacer);
   </script>
 </body>
-
 </html>
