@@ -361,14 +361,6 @@
       height: 10.8%;
     }
 
-    .helper {
-      width: min(94vw, 1120px);
-      margin: 14px auto 0;
-      color: #8fa4b5;
-      font-size: 0.76rem;
-      line-height: 1.45;
-      text-align: center;
-    }
 
     .helper kbd {
       padding: 1px 5px;
@@ -445,12 +437,6 @@
         display: block;
       }
 
-      .helper {
-        width: 100vw;
-        margin: 20px 0 0;
-        padding: 0 16px;
-        text-align: left;
-      }
 
       #tooltip-dimmer {
         width: 100vw;
@@ -543,9 +529,7 @@
       <button class="hotspot" id="summary-existence" type="button" data-label="Why anything at all?" data-question="Why is there something rather than nothing, and is it possible that absolute nothingness was never a genuine alternative to existence in the first place? Please compare the major philosophical and cosmological approaches." aria-label="Ask Google AI why there is something rather than nothing"></button>
     </div>
 
-    <p class="helper">
-      Desktop: hover over a section to preview the exact question, then click to ask Google AI. Keyboard: use <kbd>Tab</kbd> to preview and <kbd>Enter</kbd> to open it. <br><br>Mobile: tap a section to ask the question; swipe sideways to explore the infographic.
-    </p>
+
   </main>
 
   <script>
@@ -604,20 +588,6 @@
         showTooltip(hotspot);
       });
 
-      /*
-        Desktop hover preview.
-        Touchscreens normally ignore this.
-      */
-      hotspot.addEventListener('mouseenter', () => {
-        if (window.matchMedia('(hover: hover)').matches) {
-          showTooltip(hotspot);
-        }
-      });
-
-      hotspot.addEventListener('focus', () => {
-        showTooltip(hotspot);
-      });
-    });
 
     /*
       Google can ONLY be opened from this button.
