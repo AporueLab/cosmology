@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#050b12">
-  <meta name="description" content="An interactive guide to the beginning of space-time. Tap a concept to explore it with Google AI Mode.">
+  <meta name="description" content="An interactive guide to the beginning of space-time. Tap a concept to explore it with Perplexity.">
   <title>The Beginning of Space-Time</title>
   <link rel="icon" type="image/png" href="favicon.png">
 
@@ -154,31 +154,6 @@
       bottom: 24px;
       transform: translateX(-50%);
       width: min(860px, calc(100vw - 36px));
-      padding: 22px 26px;
-      border: 1px solid rgba(121, 216, 255, 0.72);
-      border-radius: 16px;
-      background: rgba(4, 13, 21, 0.98);
-      color: #eefaff;
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.72);
-      font-size: 16px;
-      line-height: 1.55;
-      text-align: center;
-      backdrop-filter: blur(500px);
-      -webkit-backdrop-filter: blur(500px);
-    }
-
-    #question-tooltip.visible {
-      display: block;
-    }
-
-    #question-tooltip {
-      position: fixed;
-      z-index: 5000;
-      display: none;
-      left: 50%;
-      bottom: 24px;
-      transform: translateX(-50%);
-      width: min(860px, calc(100vw - 36px));
       padding: 22px 26px 18px;
       border: 1px solid rgba(121, 216, 255, 0.72);
       border-radius: 16px;
@@ -207,7 +182,7 @@
       padding: 0 20px;
     }
 
-    #ask-google {
+    #ask-perplexity {
       margin-top: 15px;
       padding: 9px 18px;
       border: 1px solid rgba(121, 216, 255, 0.7);
@@ -219,7 +194,7 @@
       cursor: pointer;
     }
 
-    #ask-google:hover {
+    #ask-perplexity:hover {
       background: rgba(121, 216, 255, 0.25);
     }
 
@@ -242,7 +217,7 @@
       color: white;
     }
 
-    #ask-google,
+    #ask-perplexity,
     #close-tooltip {
       pointer-events: auto;
       touch-action: manipulation;
@@ -361,13 +336,11 @@
       height: 10.8%;
     }
 
-
     /* Add ?debug=1 to the URL to show every hotspot permanently. */
     body.debug .hotspot {
       border-color: rgba(255, 95, 95, 0.9);
       background: rgba(255, 70, 70, 0.13);
     }
-
 
     @media (max-width: 700px) {
 
@@ -427,7 +400,6 @@
         display: block;
       }
 
-
       #tooltip-dimmer {
         width: 100vw;
         height: min(22vh, 180px);
@@ -449,8 +421,6 @@
         font-size: 30px;
         line-height: 38px;
       }
-
-
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -464,10 +434,11 @@
 <body>
   <header id="fixed-header">
     <h1 class="main-title">The Beginning of Space-Time</h1>
-    <p class="main-subtitle"><strong>Tap a section</strong> to explore the question with Google AI</p>
+    <p class="main-subtitle"><strong>Tap a section</strong> to explore the question with Perplexity</p>
   </header>
 
   <div id="tooltip-dimmer" aria-hidden="true"></div>
+
   <div id="question-tooltip" role="dialog" aria-hidden="true">
     <button id="close-tooltip" type="button" aria-label="Close">×</button>
 
@@ -475,8 +446,8 @@
 
     <div id="question-text"></div>
 
-    <button id="ask-google" type="button">
-      Ask Google AI
+    <button id="ask-perplexity" type="button">
+      Ask Perplexity
     </button>
   </div>
 
@@ -486,61 +457,58 @@
     <div class="image-container" id="infographic">
       <img src="spacetime-infographic.png" alt="Infographic explaining the expanding universe, the meaning of before time, cosmological singularities, possible alternatives to a true beginning, and the philosophical question of absolute nothingness." width="1149" height="1369">
 
-      <button class="hotspot" id="expanding-universe" type="button" data-label="Evidence for the Big Bang" data-question="What evidence supports the Big Bang model of an expanding universe?" aria-label="Ask Google AI what evidence supports the Big Bang model"></button>
+      <button class="hotspot" id="expanding-universe" type="button" data-label="Evidence for the Big Bang" data-question="What evidence supports the Big Bang model of an expanding universe?" aria-label="Ask Perplexity what evidence supports the Big Bang model"></button>
 
-      <button class="hotspot" id="big-bang-not-explosion" type="button" data-label="Why not an explosion?" data-question="Why was the Big Bang an expansion of space, not an explosion inside space?" aria-label="Ask Google AI why the Big Bang was an expansion of space rather than an explosion"></button>
+      <button class="hotspot" id="big-bang-not-explosion" type="button" data-label="Why not an explosion?" data-question="Why was the Big Bang an expansion of space, not an explosion inside space?" aria-label="Ask Perplexity why the Big Bang was an expansion of space rather than an explosion"></button>
 
-      <button class="hotspot" id="before-time" type="button" data-label="Can there be a before?" data-question="If time had a beginning, does it make sense to ask what happened before the Big Bang?" aria-label="Ask Google AI whether it makes sense to ask what happened before the Big Bang"></button>
+      <button class="hotspot" id="before-time" type="button" data-label="Can there be a before?" data-question="If time had a beginning, does it make sense to ask what happened before the Big Bang?" aria-label="Ask Perplexity whether it makes sense to ask what happened before the Big Bang"></button>
 
-      <button class="hotspot" id="singularity" type="button" data-label="What is a singularity?" data-question="What is a cosmological singularity, and why might it mark the limit of general relativity?" aria-label="Ask Google AI what a cosmological singularity is and why it may mark the limit of general relativity"></button>
+      <button class="hotspot" id="singularity" type="button" data-label="What is a singularity?" data-question="What is a cosmological singularity, and why might it mark the limit of general relativity?" aria-label="Ask Perplexity what a cosmological singularity is and why it may mark the limit of general relativity"></button>
 
-      <button class="hotspot" id="beyond-overview" type="button" data-label="Beyond the singularity" data-question="What could replace the Big Bang singularity, and which ideas are still speculative?" aria-label="Ask Google AI what could replace the Big Bang singularity"></button>
+      <button class="hotspot" id="beyond-overview" type="button" data-label="Beyond the singularity" data-question="What could replace the Big Bang singularity, and which ideas are still speculative?" aria-label="Ask Perplexity what could replace the Big Bang singularity"></button>
 
-      <button class="hotspot" id="true-beginning" type="button" data-label="A true beginning?" data-question="Could the universe have a first moment without there ever being a state of nothingness?" aria-label="Ask Google AI whether the universe could have a first moment without a previous state of nothingness"></button>
+      <button class="hotspot" id="true-beginning" type="button" data-label="A true beginning?" data-question="Could the universe have a first moment without there ever being a state of nothingness?" aria-label="Ask Perplexity whether the universe could have a first moment without a previous state of nothingness"></button>
 
-      <button class="hotspot" id="quantum-transition" type="button" data-label="Quantum transition" data-question="Could our universe have emerged from an earlier quantum state before ordinary space and time existed?" aria-label="Ask Google AI whether the universe could have emerged from an earlier quantum state"></button>
+      <button class="hotspot" id="quantum-transition" type="button" data-label="Quantum transition" data-question="Could our universe have emerged from an earlier quantum state before ordinary space and time existed?" aria-label="Ask Perplexity whether the universe could have emerged from an earlier quantum state"></button>
 
-      <button class="hotspot" id="cyclic-eternal" type="button" data-label="Cyclic or eternal?" data-question="Could the universe be cyclic or eternal instead of having a true beginning?" aria-label="Ask Google AI whether the universe could be cyclic or eternal"></button>
+      <button class="hotspot" id="cyclic-eternal" type="button" data-label="Cyclic or eternal?" data-question="Could the universe be cyclic or eternal instead of having a true beginning?" aria-label="Ask Perplexity whether the universe could be cyclic or eternal"></button>
 
-      <button class="hotspot" id="multiverse" type="button" data-label="A multiverse?" data-question="Could our universe be part of a larger multiverse?" aria-label="Ask Google AI whether our universe could be part of a multiverse"></button>
+      <button class="hotspot" id="multiverse" type="button" data-label="A multiverse?" data-question="Could our universe be part of a larger multiverse?" aria-label="Ask Perplexity whether our universe could be part of a multiverse"></button>
 
-      <button class="hotspot" id="nothing-image" type="button" data-label="Laws without a universe?" data-question="If there were absolutely nothing, could the laws of physics still exist?" aria-label="Ask Google AI whether the laws of physics could exist if there were absolutely nothing"></button>
+      <button class="hotspot" id="nothing-image" type="button" data-label="Absolute nothingness" data-question="What would absolute nothingness actually mean?" aria-label="Ask Perplexity what absolute nothingness would mean"></button>
 
-      <button class="hotspot" id="nothing-image" type="button" data-label="Absolute nothingness" data-question="What would absolute nothingness actually mean?" aria-label="Ask Google AI what absolute nothingness would mean"></button>
+      <button class="hotspot" id="nothing-possible" type="button" data-label="If nothingness is possible" data-question="If absolute nothingness were possible, how could something ever arise from it?" aria-label="Ask Perplexity how something could arise from absolute nothingness"></button>
 
-      <button class="hotspot" id="nothing-possible" type="button" data-label="If nothingness is possible" data-question="If absolute nothingness were possible, how could something ever arise from it?" aria-label="Ask Google AI how something could arise from absolute nothingness"></button>
+      <button class="hotspot" id="nothing-impossible" type="button" data-label="If nothingness is impossible" data-question="Could absolute nothingness be impossible, meaning that something must always exist?" aria-label="Ask Perplexity whether absolute nothingness could be impossible"></button>
 
-      <button class="hotspot" id="nothing-impossible" type="button" data-label="If nothingness is impossible" data-question="Could absolute nothingness be impossible, meaning that something must always exist?" aria-label="Ask Google AI whether absolute nothingness could be impossible"></button>
+      <button class="hotspot" id="summary-time" type="button" data-label="Does before have meaning?" data-question="If time itself had a beginning, can the word before have any meaning?" aria-label="Ask Perplexity whether before has meaning if time had a beginning"></button>
 
-      <button class="hotspot" id="summary-time" type="button" data-label="Does before have meaning?" data-question="If time itself had a beginning, can the word before have any meaning?" aria-label="Ask Google AI whether before has meaning if time had a beginning"></button>
+      <button class="hotspot" id="summary-singularity" type="button" data-label="A limit of knowledge?" data-question="Why is a cosmological singularity better understood as a limit of our knowledge rather than a physical thing in space?" aria-label="Ask Perplexity why a singularity may represent a limit of our knowledge"></button>
 
-      <button class="hotspot" id="summary-singularity" type="button" data-label="A limit of knowledge?" data-question="Why is a cosmological singularity better understood as a limit of our knowledge rather than a physical thing in space?" aria-label="Ask Google AI why a singularity may represent a limit of our knowledge"></button>
+      <button class="hotspot" id="summary-physics" type="button" data-label="What can physics explain?" data-question="Why can physics describe the early universe but not explain why there is a universe at all?" aria-label="Ask Perplexity why physics cannot explain why there is a universe at all"></button>
 
-      <button class="hotspot" id="summary-physics" type="button" data-label="What can physics explain?" data-question="Why can physics describe the early universe but not explain why there is a universe at all?" aria-label="Ask Google AI why physics cannot explain why there is a universe at all"></button>
-
-      <button class="hotspot" id="summary-existence" type="button" data-label="The mystery of existence" data-question="Why is existence itself still such a deep mystery?" aria-label="Ask Google AI why existence itself remains a mystery"></button>
+      <button class="hotspot" id="summary-existence" type="button" data-label="The mystery of existence" data-question="Why is existence itself still such a deep mystery?" aria-label="Ask Perplexity why existence itself remains a mystery"></button>
     </div>
-
-
   </main>
 
   <script>
-    function askGoogleAI(question) {
+    function askPerplexity(question) {
       const url =
-        'https://www.google.com/search?udm=50&q=' +
+        'https://www.perplexity.ai/search?s=o&q=' +
         encodeURIComponent(question);
 
       window.open(url, '_blank', 'noopener,noreferrer');
     }
 
     const tooltip = document.getElementById('question-tooltip');
+
     tooltip.addEventListener('click', (event) => {
       event.stopPropagation();
     });
+
     const questionText = document.getElementById('question-text');
     const dimmer = document.getElementById('tooltip-dimmer');
-
-    const askButton = document.getElementById('ask-google');
+    const askButton = document.getElementById('ask-perplexity');
     const closeButton = document.getElementById('close-tooltip');
 
     let currentQuestion = '';
@@ -577,11 +545,11 @@
     });
 
     /*
-      Google can ONLY be opened from this button.
+      Perplexity can ONLY be opened from this button.
     */
     askButton.addEventListener('click', () => {
       if (currentQuestion) {
-        askGoogleAI(currentQuestion);
+        askPerplexity(currentQuestion);
       }
     });
 
