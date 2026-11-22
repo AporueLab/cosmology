@@ -24,85 +24,104 @@
   };
 
   const css = `
-    #ap-nav-toggle, #ap-nav-drawer, #ap-nav-about, #ap-nav-shade {
-      font-family: Inter, "Helvetica Neue", Arial, sans-serif; box-sizing: border-box;
-    }
+    /* AporueLab: match the information pop-ups in Solar System / Earth Chronicle. */
+    #ap-nav-toggle, #ap-nav-drawer, #ap-nav-about, #ap-nav-shade { box-sizing:border-box; }
     #ap-nav-toggle {
-      position: fixed; top: auto; left: auto; right: max(18px, env(safe-area-inset-right));
-      bottom: max(22px, env(safe-area-inset-bottom));
-      z-index: 12100; width: 46px; height: 46px; padding: 9px; display: flex;
-      flex-direction: column; justify-content: space-evenly; align-items: center;
-      border: 1px solid rgba(255,227,184,.48); border-radius: 13px;
-      box-shadow: 0 5px 22px rgba(0,0,0,.62);
-      background: rgba(4,12,20,.83); color: #ffe3b8; cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
+      position:fixed; left:max(18px, env(safe-area-inset-left)); right:auto;
+      bottom:max(22px, env(safe-area-inset-bottom)); top:auto;
+      z-index:12100; display:flex; flex-direction:column;
+      justify-content:space-evenly; align-items:center;
+      width:46px; height:46px; padding:9px;
+      border:1px solid rgba(255,227,184,.48); border-radius:13px;
+      box-shadow:0 5px 22px rgba(0,0,0,.62);
+      background:rgba(4,12,20,.90); color:#ffe3b8; cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
     }
-    #ap-nav-toggle span { display:block; width:21px; height:2px; border-radius:2px; background:currentColor; }
-    #ap-nav-toggle:hover, #ap-nav-toggle[aria-expanded="true"] { border-color: #ffe3b8; background: rgba(37,43,53,.96); }
-    #ap-nav-toggle:focus-visible, #ap-nav-drawer a:focus-visible, #ap-nav-drawer button:focus-visible,
-    #ap-nav-about button:focus-visible { outline: 2px solid #79d8ff; outline-offset: 3px; }
-    #ap-nav-shade { position:fixed; inset:0; background:rgba(0,0,0,.52); z-index:12000; }
-    /* Match the existing exhibit information pop-ups: centred charcoal card,
-       scrollable content and a fixed footer with a Close action. */
-    #ap-nav-drawer {
-      position: fixed; left:50%; top:50%; bottom:auto; right:auto;
-      transform:translate(-50%, -50%); z-index:12010;
+    #ap-nav-toggle span {display:block; width:21px; height:2px; border-radius:2px; background:currentColor;}
+    #ap-nav-toggle:hover, #ap-nav-toggle[aria-expanded="true"] {
+      border-color:#ffe3b8; background:rgba(37,43,53,.96);
+    }
+    #ap-nav-shade {position:fixed; inset:0; z-index:12000; background:rgba(0,0,0,.52);}
+    /* Exact popup geometry, colours and footer from the exhibit's .tooltip rules. */
+    #ap-nav-drawer, #ap-nav-about {
+      position:fixed; top:50%; left:50%; right:auto; bottom:auto;
+      transform:translate(-50%,-50%); z-index:12010;
       display:flex; flex-direction:column;
-      width:min(450px, 95vw); max-height:85vh; max-height:85dvh;
-      overflow:hidden; padding:5px; border:1px solid #444;
-      border-radius:14px; background:#222; color:#ddd;
-      box-shadow:0 10px 30px rgba(0,0,0,.8); text-align:left;
-      font-size:14px; line-height:1.45;
+      width:95vw; max-width:450px; max-height:85vh; max-height:85dvh;
+      padding:5px; overflow:hidden;
+      border:1px solid #444; border-radius:14px;
+      background-color:#222; color:#ddd;
+      box-shadow:0 10px 30px rgba(0,0,0,.8);
+      font-family:Arial,sans-serif; font-size:16px; line-height:1.5;
+      text-align:center;
     }
-    #ap-nav-drawer .ap-nav-content {
-      padding:15px 14px 20px; overflow-y:auto; min-height:0;
-      flex:1 1 auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
+    #ap-nav-about {z-index:12120;}
+    #ap-nav-drawer .ap-nav-content, #ap-nav-about .ap-about-content {
+      padding:12px 12px 24px;
+      text-align:center; overflow-y:auto; -webkit-overflow-scrolling:touch;
+      overscroll-behavior:contain; flex:1 1 auto; min-height:0;
     }
     #ap-nav-drawer .ap-nav-footer, #ap-nav-about .ap-nav-footer {
-      border-top:1px solid #444; background:#222; flex-shrink:0;
       padding:10px 20px; text-align:right;
+      border-top:1px solid #444; background-color:#222; flex-shrink:0;
     }
     #ap-nav-drawer .ap-nav-close, #ap-nav-about .ap-nav-close {
-      border:0; border-radius:6px; color:#fff; background:transparent;
-      font:400 16px/1.1 Inter,Arial,sans-serif; padding:5px 14px; cursor:pointer;
+      cursor:pointer; background:none; border:none; color:#fff;
+      font:400 16px/1 Arial,sans-serif; padding:5px 14px;
+      border-radius:6px;
     }
-    #ap-nav-drawer .ap-nav-close:hover, #ap-nav-about .ap-nav-close:hover { color:bisque; }
-    #ap-nav-drawer h2 { font:700 20px/1.2 Inter,Arial,sans-serif; margin:0; color:#fff; text-align:center; letter-spacing:1.3px; }
-    #ap-nav-drawer .ap-subtitle { margin:6px 0 17px; color:#aaa; font-size:12px; text-align:center; }
-    #ap-nav-drawer .ap-label { margin:18px 0 7px; color:bisque; font-weight:700; letter-spacing:1px; font-size:11px; }
-    #ap-nav-drawer .ap-link { display:block; padding:11px 12px; color:#ddd; text-decoration:none;
-      border:1px solid #444; border-radius:8px; margin:6px 0; background:#292929; }
-    #ap-nav-drawer .ap-link strong { font-size:14px; font-weight:600; }
-    #ap-nav-drawer .ap-link small { display:block; font-size:11px; margin-top:3px; color:#aaa; }
-    #ap-nav-drawer .ap-link:hover { background:#343434; border-color:#777; }
-    #ap-nav-drawer .ap-link[aria-current="page"] { border-color:#a08a6b; background:#39332c; color:bisque; }
-    #ap-nav-drawer .ap-action { display:block; width:100%; cursor:pointer; text-align:left;
-      margin-top:8px; padding:11px 12px; color:#ddd; font:600 14px Inter,Arial,sans-serif;
-      background:#292929; border:1px solid #444; border-radius:8px; }
-    #ap-nav-drawer .ap-action:hover { background:#343434; }
-    #ap-nav-drawer .ap-lang-row { display:flex; align-items:center; gap:9px; margin-top:7px; }
-    #ap-nav-drawer .ap-lang { display:inline-flex; justify-content:center; flex:1; text-decoration:none;
-      color:#ddd; background:#292929; border:1px solid #444;
-      border-radius:7px; padding:9px 4px; font:600 13px Inter,Arial,sans-serif; }
-    #ap-nav-drawer .ap-lang[aria-current="true"] { border-color:#a08a6b; color:bisque; background:#39332c; }
-    #ap-nav-drawer .ap-lang[aria-disabled="true"] { color:#72818f; cursor:not-allowed; opacity:.65; }
-    #ap-nav-drawer .ap-note { color:#8fa2b0; margin-top:8px; font-size:11px; }
-    #ap-nav-about { position:fixed; z-index:12120; top:50%; left:50%; transform:translate(-50%,-50%);
-      display:flex; flex-direction:column; padding:5px;
-      width:min(450px,95vw); max-height:85vh; max-height:85dvh; overflow:hidden;
-      color:#ddd; background:#222; border:1px solid #444;
-      border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,.8);
-      font-size:14px; line-height:1.5; text-align:left; }
-    #ap-nav-about h2 { font-size:20px; color:#fff; margin:0 0 12px; text-align:center; }
-    #ap-nav-about .ap-about-content { flex:1 1 auto; min-height:0; overflow-y:auto;
-      padding:15px 12px 22px; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; }
-    #ap-nav-about .ap-about-content img { max-width:100%; height:auto; }
-    #ap-nav-about .ap-about-content a { color:bisque; }
-    #ap-nav-shade[hidden], #ap-nav-drawer[hidden], #ap-nav-about[hidden] { display:none !important; }
+    #ap-nav-drawer .ap-nav-close:hover, #ap-nav-about .ap-nav-close:hover {color:bisque;}
+    #ap-nav-drawer h2, #ap-nav-about h2 {
+      margin:0 0 10px; color:#fff; font:700 1.2rem/1.35 Arial,sans-serif;
+      letter-spacing:normal; text-align:center;
+    }
+    #ap-nav-drawer .ap-subtitle {
+      margin:0 0 15px; color:#ddd; font:400 16px/1.5 Arial,sans-serif;
+    }
+    #ap-nav-drawer .ap-label {
+      margin:17px 0 6px; color:bisque; font:700 15px/1.3 Arial,sans-serif;
+      letter-spacing:normal; text-align:center;
+    }
+    /* Link treatment mirrors .tooltip a: plain blue text, no large outlined cards. */
+    #ap-nav-drawer a.ap-link {
+      display:block; margin:0; padding:9px 6px;
+      border:0; border-radius:6px; background:transparent;
+      color:#58a6ff; text-decoration:none; text-align:center;
+      font:400 16px/1.45 Arial,sans-serif;
+    }
+    #ap-nav-drawer a.ap-link strong {display:block; color:inherit; font:700 16px/1.45 Arial,sans-serif;}
+    #ap-nav-drawer a.ap-link small {display:block; color:#aaa; font:400 13px/1.35 Arial,sans-serif; margin-top:2px;}
+    #ap-nav-drawer a.ap-link:hover {background:#2e2e2e;}
+    #ap-nav-drawer a.ap-link[aria-current="page"] {
+      background:#303030; color:bisque;
+    }
+    #ap-nav-drawer button.ap-action {
+      display:block; width:100%; cursor:pointer;
+      background:transparent; color:#58a6ff; border:none;
+      font:400 16px/1.5 Arial,sans-serif; padding:10px 6px;
+      border-radius:6px; text-align:center;
+    }
+    #ap-nav-drawer button.ap-action:hover {background:#2e2e2e;}
+    #ap-nav-drawer .ap-lang-row {
+      display:flex; justify-content:center; align-items:center; gap:14px; margin:7px 0 0;
+    }
+    #ap-nav-drawer a.ap-lang {
+      display:inline-block; flex:1; padding:7px 4px;
+      border:0; border-radius:6px; background:transparent;
+      text-decoration:none; color:#58a6ff;
+      font:400 16px/1.4 Arial,sans-serif;
+    }
+    #ap-nav-drawer a.ap-lang[aria-current="true"] {color:bisque; background:#303030;}
+    #ap-nav-drawer a.ap-lang[aria-disabled="true"] {color:#888; opacity:.7; pointer-events:none;}
+    #ap-nav-drawer .ap-note {color:#aaa; font-size:13px; margin:8px 0 0;}
+    #ap-nav-about .ap-about-content img {max-width:100%; height:auto;}
+    #ap-nav-about .ap-about-content a {color:#58a6ff;}
+    #ap-nav-shade[hidden], #ap-nav-drawer[hidden], #ap-nav-about[hidden] {display:none !important;}
+    #ap-nav-toggle:focus-visible, #ap-nav-drawer :focus-visible, #ap-nav-about :focus-visible {
+      outline:2px solid #58a6ff; outline-offset:3px;
+    }
     @media(max-width:600px) {
-      #ap-nav-toggle { width:46px; height:46px; top:auto; bottom:max(18px, env(safe-area-inset-bottom)); padding:9px; }
-      #ap-nav-toggle span { width:21px; }
-      #ap-nav-drawer { top:50%; bottom:auto; }
+      #ap-nav-toggle {width:46px; height:46px; top:auto; bottom:max(18px, env(safe-area-inset-bottom));}
     }
   `;
   const style = document.createElement('style');
