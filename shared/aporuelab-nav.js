@@ -63,6 +63,13 @@
       text-align:center; overflow-y:auto; -webkit-overflow-scrolling:touch;
       overscroll-behavior:contain; flex:1 1 auto; min-height:0;
     }
+    #ap-nav-drawer .ap-nav-header {
+      flex:0 0 auto; padding:12px 12px 6px; min-width:0;
+      border-bottom:1px solid #444;
+    }
+    #ap-nav-drawer .ap-nav-header .ap-subtitle {margin-bottom:8px;}
+    #ap-nav-drawer .ap-question-panel .ap-label {margin:4px 0 6px;}
+    #ap-nav-drawer .ap-question-panel .ap-question-form {margin:6px 0 8px;}
     #ap-nav-drawer .ap-nav-footer, #ap-nav-about .ap-nav-footer {
       padding:10px 20px; text-align:right;
       border-top:1px solid #444; background-color:#222; flex-shrink:0;
@@ -171,34 +178,21 @@
   const subtitle = document.createElement('p');
   subtitle.className = 'ap-subtitle';
   subtitle.textContent = labels.subtitle;
+  // Fixed title and question entry above the independently scrolling exhibit list.
+  const drawerHeader = document.createElement('div');
+  drawerHeader.className = 'ap-nav-header';
+  const questionPanel = document.createElement('div');
+  questionPanel.className = 'ap-question-panel';
+  drawerHeader.append(title,subtitle,questionPanel);
   const drawerContent = document.createElement('div');
   drawerContent.className = 'ap-nav-content';
-  drawerContent.append(title,subtitle);
-  drawer.appendChild(drawerContent);
+  drawer.append(drawerHeader,drawerContent);
 
-  function heading(text) {
-    const el = document.createElement('div');
-    el.className = 'ap-label';
-    el.textContent = text;
-    drawerContent.append(el);
-  }
-  heading(labels.explore);
-  for (const item of exhibits) {
-    const link = document.createElement('a');
-    link.className = 'ap-link';
-    link.href = linkFor(item.id, lang);
-    if (item.id === site) link.setAttribute('aria-current','page');
-    const name = document.createElement('strong');
-    name.textContent = cs ? item.cs : item.en;
-    const detail = document.createElement('small');
-    detail.textContent = (cs ? item.descriptionCs : item.descriptionEn) +
-      (cs && !item.hasCs ? ' · ' + labels.englishOnly : '');
-    link.append(name,detail);
-    drawerContent.appendChild(link);
-  }
-  heading(labels.options);
   // Free-form Perplexity search, using the same URL format as the cosmology hotspots.
-  heading(labels.ask);
+  const askHeading = document.createElement('div');
+  askHeading.className = 'ap-label';
+  askHeading.textContent = labels.ask;
+  questionPanel.appendChild(askHeading);
   const questionForm = document.createElement('form');
   questionForm.className = 'ap-question-form';
   questionForm.setAttribute('role','search');
@@ -221,7 +215,29 @@
     const url = 'https://www.perplexity.ai/search?s=o&q=' + encodeURIComponent(question);
     window.open(url,'_blank','noopener,noreferrer');
   });
-  drawerContent.appendChild(questionForm);
+  questionPanel.appendChild(questionForm);
+
+
+  function heading(text) {
+    const el = document.createElement('div');
+    el.className = 'ap-label';
+    el.textContent = text;
+    drawerContent.append(el);
+  }
+  heading(labels.explore);
+  for (const item of exhibits) {
+    const link = document.createElement('a');
+    link.className = 'ap-link';
+    link.href = linkFor(item.id, lang);
+    if (item.id === site) link.setAttribute('aria-current','page');
+    const name = document.createElement('strong');
+    name.textContent = cs ? item.cs : item.en;
+    const detail = document.createElement('small');
+    detail.textContent = (cs ? item.descriptionCs : item.descriptionEn) +
+      (cs && !item.hasCs ? ' · ' + labels.englishOnly : '');
+    link.append(name,detail);
+    drawerContent.appendChild(link);
+  }
   const aboutButton = document.createElement('button');
   aboutButton.type = 'button';
   aboutButton.className = 'ap-action';
