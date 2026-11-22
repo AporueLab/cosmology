@@ -42,52 +42,67 @@
     #ap-nav-toggle:focus-visible, #ap-nav-drawer a:focus-visible, #ap-nav-drawer button:focus-visible,
     #ap-nav-about button:focus-visible { outline: 2px solid #79d8ff; outline-offset: 3px; }
     #ap-nav-shade { position:fixed; inset:0; background:rgba(0,0,0,.52); z-index:12000; }
+    /* Match the existing exhibit information pop-ups: centred charcoal card,
+       scrollable content and a fixed footer with a Close action. */
     #ap-nav-drawer {
-      position: fixed; top: auto; left: auto;
-      bottom: max(81px, calc(env(safe-area-inset-bottom) + 81px));
-      right: max(16px, env(safe-area-inset-right)); z-index:12010;
-      width: min(330px, calc(100vw - 32px)); max-height: min(calc(100dvh - 116px), 650px);
-      overflow-y: auto; padding: 18px; border: 1px solid rgba(151,190,225,.46);
-      border-radius: 13px; background: rgba(5,13,23,.98); color:#ebf3f9;
-      box-shadow:0 16px 55px rgba(0,0,0,.75); text-align:left;
-      font-size:14px; line-height:1.45; overscroll-behavior:contain;
+      position: fixed; left:50%; top:50%; bottom:auto; right:auto;
+      transform:translate(-50%, -50%); z-index:12010;
+      display:flex; flex-direction:column;
+      width:min(450px, 95vw); max-height:85vh; max-height:85dvh;
+      overflow:hidden; padding:5px; border:1px solid #444;
+      border-radius:14px; background:#222; color:#ddd;
+      box-shadow:0 10px 30px rgba(0,0,0,.8); text-align:left;
+      font-size:14px; line-height:1.45;
     }
-    #ap-nav-drawer h2 { font:700 20px/1.1 Inter,Arial,sans-serif; margin:0; color:#ffe3b8; letter-spacing:1.6px; }
-    #ap-nav-drawer .ap-subtitle { margin:5px 0 17px; color:#93b3c6; font-size:12px; }
-    #ap-nav-drawer .ap-label { margin:18px 0 7px; color:#80d5ff; font-weight:700; letter-spacing:1.4px; font-size:11px; }
-    #ap-nav-drawer .ap-link { display:block; padding:11px 12px; color:#e6eef6; text-decoration:none;
-      border:1px solid transparent; border-radius:8px; margin:3px 0; background:rgba(255,255,255,.035); }
+    #ap-nav-drawer .ap-nav-content {
+      padding:15px 14px 20px; overflow-y:auto; min-height:0;
+      flex:1 1 auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
+    }
+    #ap-nav-drawer .ap-nav-footer, #ap-nav-about .ap-nav-footer {
+      border-top:1px solid #444; background:#222; flex-shrink:0;
+      padding:10px 20px; text-align:right;
+    }
+    #ap-nav-drawer .ap-nav-close, #ap-nav-about .ap-nav-close {
+      border:0; border-radius:6px; color:#fff; background:transparent;
+      font:400 16px/1.1 Inter,Arial,sans-serif; padding:5px 14px; cursor:pointer;
+    }
+    #ap-nav-drawer .ap-nav-close:hover, #ap-nav-about .ap-nav-close:hover { color:bisque; }
+    #ap-nav-drawer h2 { font:700 20px/1.2 Inter,Arial,sans-serif; margin:0; color:#fff; text-align:center; letter-spacing:1.3px; }
+    #ap-nav-drawer .ap-subtitle { margin:6px 0 17px; color:#aaa; font-size:12px; text-align:center; }
+    #ap-nav-drawer .ap-label { margin:18px 0 7px; color:bisque; font-weight:700; letter-spacing:1px; font-size:11px; }
+    #ap-nav-drawer .ap-link { display:block; padding:11px 12px; color:#ddd; text-decoration:none;
+      border:1px solid #444; border-radius:8px; margin:6px 0; background:#292929; }
     #ap-nav-drawer .ap-link strong { font-size:14px; font-weight:600; }
-    #ap-nav-drawer .ap-link small { display:block; font-size:11px; margin-top:3px; color:#9cb0c1; }
-    #ap-nav-drawer .ap-link:hover { background:rgba(121,216,255,.12); border-color:rgba(121,216,255,.27); }
-    #ap-nav-drawer .ap-link[aria-current="page"] { border-color:rgba(255,227,184,.48); background:rgba(255,227,184,.10); color:#ffe3b8; }
+    #ap-nav-drawer .ap-link small { display:block; font-size:11px; margin-top:3px; color:#aaa; }
+    #ap-nav-drawer .ap-link:hover { background:#343434; border-color:#777; }
+    #ap-nav-drawer .ap-link[aria-current="page"] { border-color:#a08a6b; background:#39332c; color:bisque; }
     #ap-nav-drawer .ap-action { display:block; width:100%; cursor:pointer; text-align:left;
-      margin-top:8px; padding:11px 12px; color:#e6eef6; font:600 14px Inter,Arial,sans-serif;
-      background:rgba(255,255,255,.04); border:1px solid rgba(155,182,204,.2); border-radius:8px; }
-    #ap-nav-drawer .ap-action:hover { background:rgba(121,216,255,.12); }
+      margin-top:8px; padding:11px 12px; color:#ddd; font:600 14px Inter,Arial,sans-serif;
+      background:#292929; border:1px solid #444; border-radius:8px; }
+    #ap-nav-drawer .ap-action:hover { background:#343434; }
     #ap-nav-drawer .ap-lang-row { display:flex; align-items:center; gap:9px; margin-top:7px; }
     #ap-nav-drawer .ap-lang { display:inline-flex; justify-content:center; flex:1; text-decoration:none;
-      color:#d5e8f4; background:rgba(255,255,255,.04); border:1px solid rgba(155,182,204,.3);
+      color:#ddd; background:#292929; border:1px solid #444;
       border-radius:7px; padding:9px 4px; font:600 13px Inter,Arial,sans-serif; }
-    #ap-nav-drawer .ap-lang[aria-current="true"] { border-color:#ffe3b8; color:#ffe3b8; background:rgba(255,227,184,.10); }
+    #ap-nav-drawer .ap-lang[aria-current="true"] { border-color:#a08a6b; color:bisque; background:#39332c; }
     #ap-nav-drawer .ap-lang[aria-disabled="true"] { color:#72818f; cursor:not-allowed; opacity:.65; }
     #ap-nav-drawer .ap-note { color:#8fa2b0; margin-top:8px; font-size:11px; }
     #ap-nav-about { position:fixed; z-index:12120; top:50%; left:50%; transform:translate(-50%,-50%);
-      width:min(520px,calc(100vw - 32px)); max-height:min(82dvh,700px); overflow:auto;
-      color:#e8eff5; background:#07111c; border:1px solid rgba(134,190,235,.57);
-      border-radius:13px; box-shadow:0 18px 70px #000; padding:24px; line-height:1.6;
-      font-size:14px; text-align:left; overscroll-behavior:contain; }
-    #ap-nav-about h2 { font-size:21px; padding:0 32px 0 0; color:#ffe3b8; margin:0 0 14px; }
-    #ap-nav-about .ap-close { float:right; cursor:pointer; color:#fff; background:none; border:none;
-      font-size:29px; line-height:1; padding:0 3px; }
+      display:flex; flex-direction:column; padding:5px;
+      width:min(450px,95vw); max-height:85vh; max-height:85dvh; overflow:hidden;
+      color:#ddd; background:#222; border:1px solid #444;
+      border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,.8);
+      font-size:14px; line-height:1.5; text-align:left; }
+    #ap-nav-about h2 { font-size:20px; color:#fff; margin:0 0 12px; text-align:center; }
+    #ap-nav-about .ap-about-content { flex:1 1 auto; min-height:0; overflow-y:auto;
+      padding:15px 12px 22px; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; }
     #ap-nav-about .ap-about-content img { max-width:100%; height:auto; }
-    #ap-nav-about .ap-about-content a { color:#81d6ff; }
-    #ap-nav-about .ap-about-content { clear:both; }
+    #ap-nav-about .ap-about-content a { color:bisque; }
     #ap-nav-shade[hidden], #ap-nav-drawer[hidden], #ap-nav-about[hidden] { display:none !important; }
     @media(max-width:600px) {
       #ap-nav-toggle { width:46px; height:46px; top:auto; bottom:max(18px, env(safe-area-inset-bottom)); padding:9px; }
       #ap-nav-toggle span { width:21px; }
-      #ap-nav-drawer { top:auto; bottom:max(77px, calc(env(safe-area-inset-bottom) + 77px)); }
+      #ap-nav-drawer { top:50%; bottom:auto; }
     }
   `;
   const style = document.createElement('style');
@@ -116,13 +131,16 @@
   const subtitle = document.createElement('p');
   subtitle.className = 'ap-subtitle';
   subtitle.textContent = labels.subtitle;
-  drawer.append(title,subtitle);
+  const drawerContent = document.createElement('div');
+  drawerContent.className = 'ap-nav-content';
+  drawerContent.append(title,subtitle);
+  drawer.appendChild(drawerContent);
 
   function heading(text) {
     const el = document.createElement('div');
     el.className = 'ap-label';
     el.textContent = text;
-    drawer.append(el);
+    drawerContent.append(el);
   }
   heading(labels.explore);
   for (const item of exhibits) {
@@ -136,14 +154,14 @@
     detail.textContent = (cs ? item.descriptionCs : item.descriptionEn) +
       (cs && !item.hasCs ? ' · ' + labels.englishOnly : '');
     link.append(name,detail);
-    drawer.appendChild(link);
+    drawerContent.appendChild(link);
   }
   heading(labels.options);
   const aboutButton = document.createElement('button');
   aboutButton.type = 'button';
   aboutButton.className = 'ap-action';
   aboutButton.textContent = labels.about;
-  drawer.appendChild(aboutButton);
+  drawerContent.appendChild(aboutButton);
   heading(labels.language);
   const langRow = document.createElement('div');
   langRow.className = 'ap-lang-row';
@@ -161,13 +179,26 @@
     }
     langRow.appendChild(link);
   }
-  drawer.appendChild(langRow);
+  drawerContent.appendChild(langRow);
   if (site === 'cosmology') {
     const note = document.createElement('p');
     note.className = 'ap-note';
     note.textContent = labels.englishOnly;
-    drawer.appendChild(note);
+    drawerContent.appendChild(note);
   }
+  const drawerFooter = document.createElement('div');
+  drawerFooter.className = 'ap-nav-footer';
+  const drawerClose = document.createElement('button');
+  drawerClose.type = 'button';
+  drawerClose.className = 'ap-nav-close';
+  drawerClose.textContent = labels.close;
+  drawerFooter.appendChild(drawerClose);
+  drawer.appendChild(drawerFooter);
+  drawer.setAttribute('role','dialog');
+  drawer.setAttribute('aria-modal','true');
+  drawer.setAttribute('aria-labelledby','ap-nav-drawer-title');
+  title.id = 'ap-nav-drawer-title';
+  drawer.setAttribute('tabindex','-1');
   const about = document.createElement('section');
   about.id = 'ap-nav-about';
   about.hidden = true;
@@ -176,9 +207,9 @@
   about.setAttribute('aria-labelledby','ap-nav-about-title');
   about.setAttribute('tabindex','-1');
   const close = document.createElement('button');
-  close.className='ap-close';
+  close.className='ap-nav-close';
   close.type='button';
-  close.textContent='×';
+  close.textContent=labels.close;
   close.setAttribute('aria-label',labels.close);
   const aboutTitle = document.createElement('h2');
   aboutTitle.id = 'ap-nav-about-title';
@@ -197,7 +228,11 @@
     credit.textContent = 'An AporueLab educational exhibit by Josef Handsuch. Select a section of the illustration to explore its questions with Perplexity AI.';
     content.append(intro, credit);
   }
-  about.append(close,aboutTitle,content);
+  content.prepend(aboutTitle);
+  const aboutFooter = document.createElement('div');
+  aboutFooter.className = 'ap-nav-footer';
+  aboutFooter.appendChild(close);
+  about.append(content,aboutFooter);
   document.body.append(shade,drawer,about);
 
   let previousFocus = null;
@@ -215,8 +250,7 @@
     drawer.hidden = false;
     shade.hidden = false;
     toggle.setAttribute('aria-expanded','true');
-    const active = drawer.querySelector('[aria-current="page"]');
-    (active || drawer.querySelector('.ap-link'))?.focus();
+    drawer.focus();
   }
   toggle.addEventListener('click',(event) => {
     event.stopPropagation();
@@ -230,6 +264,7 @@
     about.focus();
   });
   close.addEventListener('click',() => hideAll());
+  drawerClose.addEventListener('click',() => hideAll());
   shade.addEventListener('click',() => hideAll());
   document.addEventListener('keydown',(event) => {
     if (event.key === 'Escape' && isOpen()) { event.stopPropagation(); hideAll(); }
