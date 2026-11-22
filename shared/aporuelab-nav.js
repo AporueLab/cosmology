@@ -28,21 +28,25 @@
       font-family: Inter, "Helvetica Neue", Arial, sans-serif; box-sizing: border-box;
     }
     #ap-nav-toggle {
-      position: absolute; top: 9px; left: max(10px, env(safe-area-inset-left));
-      z-index: 12100; width: 38px; height: 38px; padding: 7px; display: flex;
+      position: fixed; top: auto; left: auto; right: max(18px, env(safe-area-inset-right));
+      bottom: max(22px, env(safe-area-inset-bottom));
+      z-index: 12100; width: 46px; height: 46px; padding: 9px; display: flex;
       flex-direction: column; justify-content: space-evenly; align-items: center;
-      border: 1px solid rgba(255,227,184,.38); border-radius: 8px;
+      border: 1px solid rgba(255,227,184,.48); border-radius: 13px;
+      box-shadow: 0 5px 22px rgba(0,0,0,.62);
       background: rgba(4,12,20,.83); color: #ffe3b8; cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
-    #ap-nav-toggle span { display:block; width:19px; height:2px; border-radius:2px; background:currentColor; }
+    #ap-nav-toggle span { display:block; width:21px; height:2px; border-radius:2px; background:currentColor; }
     #ap-nav-toggle:hover, #ap-nav-toggle[aria-expanded="true"] { border-color: #ffe3b8; background: rgba(37,43,53,.96); }
     #ap-nav-toggle:focus-visible, #ap-nav-drawer a:focus-visible, #ap-nav-drawer button:focus-visible,
     #ap-nav-about button:focus-visible { outline: 2px solid #79d8ff; outline-offset: 3px; }
     #ap-nav-shade { position:fixed; inset:0; background:rgba(0,0,0,.52); z-index:12000; }
     #ap-nav-drawer {
-      position: fixed; top: 55px; left: max(10px, env(safe-area-inset-left)); z-index:12010;
-      width: min(330px, calc(100vw - 20px)); max-height: min(78dvh, 650px);
+      position: fixed; top: auto; left: auto;
+      bottom: max(81px, calc(env(safe-area-inset-bottom) + 81px));
+      right: max(16px, env(safe-area-inset-right)); z-index:12010;
+      width: min(330px, calc(100vw - 32px)); max-height: min(calc(100dvh - 116px), 650px);
       overflow-y: auto; padding: 18px; border: 1px solid rgba(151,190,225,.46);
       border-radius: 13px; background: rgba(5,13,23,.98); color:#ebf3f9;
       box-shadow:0 16px 55px rgba(0,0,0,.75); text-align:left;
@@ -81,9 +85,9 @@
     #ap-nav-about .ap-about-content { clear:both; }
     #ap-nav-shade[hidden], #ap-nav-drawer[hidden], #ap-nav-about[hidden] { display:none !important; }
     @media(max-width:600px) {
-      #ap-nav-toggle { width:34px; height:34px; top:7px; padding:6px; }
-      #ap-nav-toggle span { width:17px; }
-      #ap-nav-drawer { top:47px; }
+      #ap-nav-toggle { width:46px; height:46px; top:auto; bottom:max(18px, env(safe-area-inset-bottom)); padding:9px; }
+      #ap-nav-toggle span { width:21px; }
+      #ap-nav-drawer { top:auto; bottom:max(77px, calc(env(safe-area-inset-bottom) + 77px)); }
     }
   `;
   const style = document.createElement('style');
@@ -98,7 +102,7 @@
   toggle.setAttribute('aria-expanded','false');
   toggle.setAttribute('aria-controls','ap-nav-drawer');
   toggle.innerHTML = '<span></span><span></span><span></span>';
-  header.appendChild(toggle);
+  document.body.appendChild(toggle);
 
   const shade = document.createElement('div');
   shade.id = 'ap-nav-shade';
