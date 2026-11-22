@@ -232,21 +232,26 @@
   close.setAttribute('aria-label',labels.close);
   const aboutTitle = document.createElement('h2');
   aboutTitle.id = 'ap-nav-about-title';
-  aboutTitle.textContent = (cs ? exhibits.find(x=>x.id===site).cs : exhibits.find(x=>x.id===site).en);
+  aboutTitle.textContent = labels.about;
   const content = document.createElement('div');
   content.className = 'ap-about-content';
-  const existingAbout = document.querySelector('.hotspot#about');
-  if (existingAbout) {
-    // Reuse the project's published About text and credits; navigation now lives here.
-    const source = existingAbout.getAttribute('data-desc') || '';
-    content.innerHTML = source.split(/<br><br>(?:Other projects|Další projekty):/i)[0];
-  } else {
-    const intro = document.createElement('p');
-    intro.textContent = 'An interactive educational guide exploring the origins of space-time, the expanding universe, and the limits of present cosmological knowledge.';
-    const credit = document.createElement('p');
-    credit.textContent = 'An AporueLab educational exhibit by Josef Handsuch. Select a section of the illustration to explore its questions with Perplexity AI.';
-    content.append(intro, credit);
-  }
+  // The same About text is used throughout the educational series.
+  // Keep both translations here so future exhibits inherit the description.
+  const aboutParagraphs = cs ? [
+    'Tato interaktivní vzdělávací série zkoumá přírodní svět – od počátků vesmíru a vývoje života až po mimořádnou složitost lidské mysli a těla.',
+    'Každý průvodce propojuje vizuální objevování s přístupným vysvětlením založeným na současných vědeckých poznatcích. Cílem série je podněcovat zvídavost a podporovat porozumění vědě.',
+    'Vývoj série zahájil v dubnu 2026 Josef Handsuch jako osobní iniciativu odrážející jeho zájem o vzdělávání v přírodních vědách. Projekt využívá VSCodium, Adobe Photoshop a Wikipedii za asistence nástrojů umělé inteligence Gemini, Claude a ChatGPT (the EMH).'
+  ] : [
+    'This interactive educational series explores the natural world, from the origins of the universe and the evolution of life to the extraordinary complexity of the human mind and body.',
+    'Created to inspire curiosity and encourage scientific understanding, each guide combines visual exploration with accessible explanations based on current scientific knowledge.',
+    'Development of the series began in April 2026 as a personal initiative by Josef Handsuch, reflecting his commitment to natural science education. The project makes use of VSCodium, Adobe Photoshop, and Wikipedia, with AI assistance from Gemini, Claude, and ChatGPT (the EMH).'
+  ];
+  aboutParagraphs.forEach(text => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = text;
+    paragraph.style.margin = '0 0 14px';
+    content.appendChild(paragraph);
+  });
   content.prepend(aboutTitle);
   const aboutFooter = document.createElement('div');
   aboutFooter.className = 'ap-nav-footer';
