@@ -16,10 +16,12 @@
   const labels = cs ? {
     explore:'PROZKOUMAT', options:'MOŽNOSTI', about:'O PROJEKTU', language:'JAZYK',
     menu:'Otevřít nabídku AporueLab', close:'Zavřít', englishOnly:'Pouze anglicky',
+    ask:'ZEPTAT SE PERPLEXITY', questionPlaceholder:'Napište vlastní otázku…', submitQuestion:'Zeptat se',
     title:'APORUELAB', subtitle:'Interaktivní vědecké expozice'
   } : {
     explore:'EXPLORE', options:'OPTIONS', about:'ABOUT THIS PROJECT', language:'LANGUAGE',
     menu:'Open AporueLab menu', close:'Close', englishOnly:'English only',
+    ask:'ASK PERPLEXITY', questionPlaceholder:'Type your question…', submitQuestion:'Ask',
     title:'APORUELAB', subtitle:'Interactive Science Exhibits'
   };
 
@@ -102,6 +104,25 @@
       border-radius:6px; text-align:center;
     }
     #ap-nav-drawer button.ap-action:hover {background:#2e2e2e;}
+    #ap-nav-drawer .ap-question-form {
+      display:flex; gap:8px; width:100%; margin:8px 0 14px;
+      align-items:stretch; box-sizing:border-box;
+    }
+    #ap-nav-drawer .ap-question-input {
+      flex:1 1 auto; min-width:0; width:100%;
+      box-sizing:border-box; padding:10px 11px;
+      border:1px solid #666; border-radius:7px;
+      background:#303030; color:#fff;
+      font:400 16px/1.4 Arial,sans-serif;
+    }
+    #ap-nav-drawer .ap-question-input::placeholder {color:#aaa;}
+    #ap-nav-drawer .ap-question-submit {
+      flex:0 0 auto; cursor:pointer;
+      padding:10px 14px; border:1px solid #aa875a;
+      border-radius:7px; background:#58452b; color:#fff1d7;
+      font:700 15px/1.4 Arial,sans-serif;
+    }
+    #ap-nav-drawer .ap-question-submit:hover {background:#6d5434;}
     #ap-nav-drawer .ap-lang-row {
       display:flex; justify-content:center; align-items:center; gap:14px; margin:7px 0 0;
     }
@@ -176,6 +197,31 @@
     drawerContent.appendChild(link);
   }
   heading(labels.options);
+  // Free-form Perplexity search, using the same URL format as the cosmology hotspots.
+  heading(labels.ask);
+  const questionForm = document.createElement('form');
+  questionForm.className = 'ap-question-form';
+  questionForm.setAttribute('role','search');
+  const questionInput = document.createElement('input');
+  questionInput.type = 'search';
+  questionInput.className = 'ap-question-input';
+  questionInput.placeholder = labels.questionPlaceholder;
+  questionInput.setAttribute('aria-label',labels.questionPlaceholder);
+  questionInput.setAttribute('enterkeyhint','search');
+  questionInput.required = true;
+  const questionSubmit = document.createElement('button');
+  questionSubmit.type = 'submit';
+  questionSubmit.className = 'ap-question-submit';
+  questionSubmit.textContent = labels.submitQuestion;
+  questionForm.append(questionInput,questionSubmit);
+  questionForm.addEventListener('submit',(event) => {
+    event.preventDefault();
+    const question = questionInput.value.trim();
+    if (!question) return;
+    const url = 'https://www.perplexity.ai/search?s=o&q=' + encodeURIComponent(question);
+    window.open(url,'_blank','noopener,noreferrer');
+  });
+  drawerContent.appendChild(questionForm);
   const aboutButton = document.createElement('button');
   aboutButton.type = 'button';
   aboutButton.className = 'ap-action';
